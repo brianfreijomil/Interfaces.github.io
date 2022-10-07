@@ -1,0 +1,19 @@
+body{
+    position: relative;
+    width: 1440px;
+    height: 4751px;
+    background:
+     linear-gradient(360deg, rgba(72, 0, 0, 0.703093) 0%, #000000 99.99%, rgba(242, 0, 0, 0) 100%);
+}
+
+.background-new{
+    width: 1440px;
+    height: 740px;
+    left: 0px;
+    top: 0px;
+}
+
+h1{
+    font-size: 60px;
+    color: white;
+}
