@@ -1,0 +1,172 @@
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<BOTON BUY>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+
+.fill:hover,
+.fill:focus {
+  box-shadow: inset 0 0 0 2em var(--hover);
+}
+
+.pulse:hover,
+.pulse:focus {
+  -webkit-animation: pulse 1s;
+          animation: pulse 1s;
+  box-shadow: 0 0 0 2em rgba(255, 255, 255, 0);
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--hover);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--hover);
+  }
+}
+.close:hover,
+.close:focus {
+  box-shadow: inset -3.5em 0 0 0 var(--hover), inset 3.5em 0 0 0 var(--hover);
+}
+
+.raise:hover,
+.raise:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  -webkit-transform: translateY(-0.25em);
+          transform: translateY(-0.25em);
+}
+
+.up:hover,
+.up:focus {
+  box-shadow: inset 0 -3.25em 0 0 var(--hover);
+}
+
+.slide:hover,
+.slide:focus {
+  box-shadow: inset 6.5em 0 0 0 var(--hover);
+}
+
+.offset {
+  box-shadow: 0.3em 0.3em 0 0 var(--color), inset 0.3em 0.3em 0 0 var(--color);
+}
+.offset:hover, .offset:focus {
+  box-shadow: 0 0 0 0 var(--hover), inset 6em 3.5em 0 0 var(--hover);
+}
+
+.raise {
+  --color: #000000;
+  --hover: #71cdff;
+}
+
+button {
+  color: var(--color);
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+  font-size: medium;
+  font-weight: bold;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+button:hover, button:focus {
+  border-color: var(--hover);
+  background-color: #000000;
+  color: goldenrod ;
+}
+button {
+  background: goldenrod ;
+  line-height: 1;
+  padding: 7.5px 20px;
+  border-radius: 3px; /* redondear bordes */
+}
+
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Play 2.0>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+
+.button-play {
+  background: rgb(0, 0, 0); /* color de fondo */
+  color: #ffffff; /* color de fuente */
+  padding: 9px 55px;
+  border-radius: 3px; /* redondear bordes */
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  display: inline-block;
+  text-decoration: none;
+  font-size: medium;
+  font-weight: bold;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.button-play:hover {
+  color: rgb(0, 0, 0);/* color de fuente hover */
+  text-decoration: none;
+}
+.button-play::after {
+  content: "";
+  background: #d6a700; /* color de fondo hover */
+  position: absolute;
+  z-index: -1;
+  padding: 9px 55px;
+  display: block;
+  left: -20%;
+  right: -20%;
+  top: 0;
+  bottom: 0;
+  transform: skewX(-45deg) scale(0, 1);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+.button-play:hover::after {
+  transition: all 0.3s ease-out;
+  transform: skewX(-45deg) scale(1, 1);
+}
+
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Boton bajar en new game>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+
+.boton-circular{
+  width:95px;
+  height:95px;
+  background-color:#d19900;
+  margin: 10px;
+  padding:15px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  font-size:11px;
+  line-height:32px;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  display: inline-block;
+}
+.boton-circular a{
+  color:#fff;
+  text-decoration:none;
+  padding:5px 5px 5px 0;
+}
+.boton-circular:hover {
+  color: rgb(0, 0, 0);/* color de fuente hover */
+  text-decoration: none;
+}
+.boton-circular::after {
+  content: "";
+  background: #000000; /* color de fondo hover */
+  position: absolute;
+  z-index: -1;
+  padding: 9px 55px;
+  display: block;
+  left: -20%;
+  right: -20%;
+  top: 0;
+  bottom: 0;
+  transform: skewX(-45deg) scale(0, 1);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+.boton-circular:hover::after {
+  transition: all 0.3s ease-out;
+  transform: skewX(-45deg) scale(1, 1);
+}
+
+.arrow{
+  width: 65px;
+  height: 75px;
+}
