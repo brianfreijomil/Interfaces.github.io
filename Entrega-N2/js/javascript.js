@@ -1,13 +1,11 @@
-"Use strict";
-
-
+"use strict";
 
 //Banner-----------------------------------------------------------
 let arrBanner = [
-  "./assets/img/Flyers/bully-flyer.png",
-  "./assets/img/Flyers/age-flyer.png",
-  "./assets/img/Flyers/gta-flyer.png",
-  "./assets/img/Flyers/crash-flyer.png"
+  "./Entrega-N2/assets/img/Flyers/bully-flyer.png",
+  "./Entrega-N2/assets/img/Flyers/age-flyer.png",
+  "./Entrega-N2/assets/img/Flyers/gta-flyer.png",
+  "./Entrega-N2/assets/img/Flyers/crash-flyer.png"
 ];
 
 window.addEventListener("load", cambiar, false);
@@ -18,6 +16,29 @@ function rand(n){
    return(Math.floor(Math.random() * n + 1 ));
 }
 
+//profile menu-----------------------------------------------------
+document.querySelector(".profile").addEventListener("click", toggleMenu); 
+
+function toggleMenu() {
+    document.querySelector(".profile-menu").classList.toggle("show-profile");
+}
+
+//casilla pago-----------------------------------------------------
+document.querySelector("#casilla-pago").addEventListener("click", hideCasillaPago);
+
+function showCasillaPago(){
+  document.querySelector("#casilla-pago").classList.add("show-casilla");
+  document.querySelector("#casilla-pago").classList.remove("hide-casilla")
+  document.querySelector("#sombra-casilla-pago").classList.add("show-sombra-casilla");
+  document.querySelector("#sombra-casilla-pago").classList.remove("hide-sombra-casilla");
+}
+
+function hideCasillaPago(){
+  document.querySelector("#casilla-pago").classList.remove("show-casilla");
+  document.querySelector("#casilla-pago").classList.add("hide-casilla");
+  document.querySelector("#sombra-casilla-pago").classList.remove("show-sombra-casilla");
+  document.querySelector("#sombra-casilla-pago").classList.add("hide-sombra-casilla");
+}
 
 
 //carrusel 1-------------------------------------------------------
@@ -28,17 +49,19 @@ const track1 = document.querySelector(".track1");
 let width = carousel1.offsetWidth;
 let index1 = 0;
 window.addEventListener("resize", function () {
-  width = carousel.offsetWidth;
+  width = carousel1.offsetWidth;
 });
 next1.addEventListener("click", function (e) {
   e.preventDefault();
   index1 = index1 + 1;
-  prev.classList.add("show");
+  prev1.classList.add("show");
   track1.style.transform = "translateX(" + index1 * -width + "px)";
   if (track1.offsetWidth - index1 * width < index1 * width) {
     next1.classList.add("hide");
   }
 });
+
+
 prev1.addEventListener("click", function () {
   index1 = index1 - 1;
   next1.classList.remove("hide");
@@ -77,7 +100,7 @@ prev2.addEventListener("click", function () {
 });
 
 
-//carrusel 5---------------------------------------------------------
+//carrusel 3---------------------------------------------------------
 const prev3 = document.querySelector(".p3");
 const next3 = document.querySelector(".n3");
 const carousel3 = document.querySelector(".carr3");
@@ -112,7 +135,6 @@ const prev4 = document.querySelector(".p4");
 const next4 = document.querySelector(".n4");
 const carousel4 = document.querySelector(".carr4");
 const track4 = document.querySelector(".track4");
-let width4 = carousel4.offsetWidth;
 let index4 = 0;
 window.addEventListener("resize", function () {
   width = carousel4.offsetWidth;
@@ -142,7 +164,6 @@ const prev5 = document.querySelector(".p5");
 const next5 = document.querySelector(".n5");
 const carousel5 = document.querySelector(".carr5");
 const track5 = document.querySelector(".track5");
-let width5 = carousel5.offsetWidth;
 let index5 = 0;
 window.addEventListener("resize", function () {
   width = carousel5.offsetWidth;
@@ -199,8 +220,8 @@ const prev7 = document.querySelector(".p7");
 const next7 = document.querySelector(".n7");
 const carousel7 = document.querySelector(".carr7");
 const track7 = document.querySelector(".track7");
-let width7 = carousel5.offsetWidth;
 let index7 = 0;
+let width7 = carousel7.offsetWidth;
 window.addEventListener("resize", function () {
   width = carousel7.offsetWidth;
 });
@@ -231,3 +252,10 @@ setTimeout( function(){
   contenedor.style.opacity = '0';
 
 }, 5000);
+
+//share options----------------------------------------------------
+document.querySelector(".button-share").addEventListener("click", toggleShare); 
+
+function toggleShare() {
+    document.querySelector(".share-options").classList.toggle("show-share");
+}
