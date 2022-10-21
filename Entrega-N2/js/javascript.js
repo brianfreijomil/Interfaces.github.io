@@ -252,10 +252,3 @@ setTimeout( function(){
   contenedor.style.opacity = '0';
 
 }, 5000);
-
-//share options----------------------------------------------------
-document.querySelector(".button-share").addEventListener("click", toggleShare); 
-
-function toggleShare() {
-    document.querySelector(".share-options").classList.toggle("show-share");
-}

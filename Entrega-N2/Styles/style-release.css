@@ -36,10 +36,6 @@ p{
 
 /*style header----------------------------------------------------------*/
 
-header{
-  position: relative;
-}
-
 .image-banner{
   position: relative;
   width: 100%;
@@ -227,6 +223,10 @@ header{
 .habilities-img div {
   margin-right: 90px;
 }
+
+.habilities-img div img{
+  width: 100%;
+}
 .habilities {
   margin: 40px;
   margin-top: 120px;
@@ -234,7 +234,7 @@ header{
 
 .habilities-img{
     text-align: center;
-    width: 90%;
+    width: 100%;
     margin-top: 20px;
     display: flex;
     flex-flow: row;
@@ -260,6 +260,7 @@ overflow: hidden;
 }
 
 .track {
+  width: 100%;
 display: inline-flex;
 height: 100%;
 transition: transform 0.2s ease-in-out;
@@ -427,6 +428,430 @@ footer .img-logo {
 .img-social-networks {
   width: 70px;
   margin-left: 45px;
+}
+
+
+ /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Boton bajar en new game>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+
+.boton-circular{
+  width:72px;
+  height:72px;
+  background-color:#d19900;
+  margin: 10px;
+  padding:15px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 500px;
+  font-size:11px;
+  line-height:32px;
+  text-transform: uppercase;
+  position: absolute; left: 80%; top: 60%;
+  z-index: 2;
+  overflow: hidden;
+  display: inline-block;
+}
+.boton-circular a{
+  color:#fff;
+  text-decoration:none;
+  padding:5px 5px 5px 0;
+}
+.boton-circular:hover {
+  color: rgb(0, 0, 0);/* color de fuente hover */
+  text-decoration: none;
+}
+.boton-circular::after {
+  content: "";
+  background: #000000; /* color de fondo hover */
+  position: absolute;
+  z-index: -1;
+  padding: 9px 55px;
+  display: block;
+  left: -20%;
+  right: -20%;
+  top: 0;
+  bottom: 0;
+  transform: skewX(-45deg) scale(0, 1);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+.boton-circular:hover::after {
+  transition: all 0.3s ease-out;
+  transform: skewX(-45deg) scale(1, 1);
+}
+
+.arrow{
+  width: 65px;
+  height: 75px;
+}
+
+@media only screen and (max-width: 400px){
+  .container-logo {
+    z-index: 100;
+    top: 0%;
+  }
+  
+  .img-logo {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .container-title-logo h1 {
+    font-size: 14px;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .game-description{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -100px;
+    margin-left: 50px;
+    margin-right: 50px;
+
+  }
+
+  .game-description div {
+    margin-top: 40px;
+  }
+
+  .game-description div ul{
+    text-align: center;
+  }
+
+  .galeria {
+    margin-top: 100px;
+  }
+  
+  .flex-center h1 {
+    text-shadow: 0 1px 2px #000;
+  }
+  
+  .container-galeria-release {
+    display: none;
+    width: 1000px;
+    height: 375px;
+    overflow: hidden;
+    margin: 50px auto;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.35);
+    -webkit-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.35);
+    -moz-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.35);
+  }
+  
+  .container-galeria-release li {
+    position: relative;
+    display: block;
+    width: 200px;
+    float: left;
+    box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s;
+  }
+  
+  .container-galeria-release ul:hover li {
+    width: 75px;
+    filter: brightness(50%);
+  }
+  
+  .container-galeria-release ul li:hover {
+    width: 700px;
+    filter: brightness(100%);
+  }
+  
+  .container-galeria-release li img {
+    display: block;
+    width: 700px;
+    height: 100%;
+  }
+  
+  .titulo-img-release {
+    background: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    display: block;
+    transition: all 0.5s ease;
+    animation: cambia-color 10s linear infinite;
+    background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.8), rgba(255, 255, 255, 0.8));
+    background-size: 400% 400%;
+  }
+  
+  @keyframes cambia-color {
+    0% {
+        background-position: 0%, 50%;
+    }
+    50% {
+        background-position: 100%, 50%;
+    }
+    100% {
+        background-position: 0%, 100%;
+    }
+  }
+  
+  .titulo-img-release a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px;
+    font-size: 19px;
+    text-shadow: 0 1px 2px #000;
+    transition: all 0.5s ease;
+  }
+  
+  .container-galeria-release ul li:hover .titulo-img-release {
+    top: 0%;
+    box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .titulo-img-release:hover a {
+    transform: scale(1.1);
+    transition: all 0.5s ease;
+  }
+  
+  .titulo-img-release:active {
+    background: rgba(255, 255, 255, 0.5);
+  }
+  
+  
+  /*style about game--------------------------------------------------*/  
+  .about{
+      width: 90%;
+      margin: 40px;
+      margin-top: 120px;
+  }
+  
+  
+  /*style habilities---------------------------------------------------*/
+  .habilities-img div {
+    margin-bottom: 90px;
+    margin-right: 0px;
+  }
+  
+  .habilities-img div img{
+    width: 100%;
+  }
+  .habilities {
+    width: 80%;
+  }
+
+  .habilities h1 {
+    font-size: 24px;
+  }
+  
+  .habilities-img{
+      flex-flow: column;
+  }
+  
+  /*Style Carrusels*/
+  
+  .carousel-container {
+      width: 90%;
+      height: 200px;
+      margin: 10px 0px 100px 36px;
+      position: relative;
+      border-left-width: 4px;
+      border-left-style: solid;
+      border-left-color: rgba(255, 0, 0, 0);
+  }
+    
+  .inner-carousel {
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  }
+  
+  .track {
+    width: 100%;
+  display: inline-flex;
+  height: 100%;
+  transition: transform 0.2s ease-in-out;
+  padding: 0px;
+  margin: 0px;
+  }
+  
+  .card-container {
+      width: 190px;
+      height: 280px;
+      flex-shrink: 0;
+      margin-right: 25px;
+      list-style-type: none;
+  }
+  
+  .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background-position: center bottom;
+      background-size: center;
+      background-repeat: no-repeat;
+  }
+  
+  .card img {
+      width: 100%;
+      height: 100%;
+  }
+  
+  .ov-btn-grow-skew {
+      background: rgb(0, 0, 0); /* color de fondo */
+      color: #ffffff; /* color de fuente */
+      padding: 9px 55px;
+      position: absolute;
+      width: 80px;
+      z-index: 1;
+      left: 0px; bottom:0px;
+      overflow: hidden;
+      display: inline-block;
+      text-decoration: none;
+      font-size: medium;
+      font-weight: bold;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+  .ov-btn-grow-skew:hover {
+      color: rgb(0, 0, 0);/* color de fuente hover */
+      text-decoration: none;
+  }
+  .ov-btn-grow-skew::after {
+      content: "";
+      background: #d6a700; /* color de fondo hover */
+      position: absolute;
+      z-index: -1;
+      width: 90px;
+      padding: 9px 55px;
+      display: block;
+      left: -20%;
+      right: -20%;
+      top: 0;
+      bottom: 0;
+      transform: skewX(-45deg) scale(0, 1);
+      transition: all 0.3s ease;
+      text-decoration: none;
+  }
+  .ov-btn-grow-skew:hover::after {
+      transition: all 0.3s ease-out;
+      transform: skewX(-45deg) scale(1, 1);
+  }
+  
+  .nav-carrusel button {
+      position: absolute;
+      top: 50%;
+      transform: translatey(-50%);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      outline: none;
+      border: 1px solid rgba(52, 51, 51, 0.665);
+      cursor: pointer;
+      background-color: rgba(52, 51, 51, 0.665);
+  }
+  .nav-carrusel .prev {
+      left: -10px;
+      display: none;
+  }
+  .nav-carrusel .prev.show {
+      display: block;
+  }
+  .nav-carrusel .prev.show:hover {
+      background-color: rgba(82, 11, 11, 0.5);
+  }
+  .nav-carrusel .next {
+  right: 15px;
+  }
+  .nav-carrusel .next:hover {
+  background-color: rgba(82, 11, 11, 0.5);
+  }
+  .nav-carrusel .next.hide {
+  display: none;
+  }
+  
+  .nav-carrusel button p {
+  font-size: 40px;
+  color: beige;
+  text-align: center;
+  margin: 0px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-shadow: none;
+  }
+  
+  
+  /*Style footer*/
+  footer {
+    display: none;
+    flex-direction: row;
+    height: 320px;
+    background-color: rgba(142, 8, 8, 0.5);
+    border: solid 15px rgba(24, 20, 20, 0.5);
+  }
+  
+  footer div {
+    display: flex;
+    flex-direction: row;
+    margin-left: 100px;
+  }
+  
+  footer section {
+    margin-left: 50px;
+    margin-top: 50px;
+  }
+  
+  footer section h4 {
+    margin: 0px;
+    font-weight: bold;
+  }
+  
+  footer section ul {
+    margin-right: 60px;
+    padding: 0px;
+  }
+  
+  footer section ul li {
+    font-size: small;
+    margin: 10px 10px 10px 0px;
+    list-style-type: none;
+  }
+  
+  footer .footer-links {
+    margin: 0px; 
+    position: relative;
+  }
+  
+  footer .footer-links a {
+    position: absolute;
+    bottom: 10%;
+  }
+  
+  footer .img-logo {
+    position: absolute;
+    bottom: 5%;
+    left: 95%;
+    margin-left: 75px
+  }
+  
+  .img-social-networks {
+    width: 70px;
+    margin-left: 45px;
+  }
+  
+  .boton-circular{
+    display: none;
+  }
+  .boton-circular a{
+    display: none;
+  }
+  
+  
+  .arrow{
+    display: none;
+  }
+  
 }
 
 
