@@ -16,6 +16,7 @@ let img2 = document.getElementById('bicho');
 
 let shapes = [];
 let entradas = [];
+let shapesUsadas = 0;
 
 let jugador;
 let jugador1;
@@ -184,6 +185,24 @@ function addTablero(cantPosiciones) {
     }
 }
 
+//fichas jugadas
+function shapesJugadas() {
+    let suma = 0;
+    for (let i = 0; i < shapes.length; i++) {
+        if(shapes[i].getUsada()) {
+            suma ++;
+        }
+    }
+    return suma;
+}
+
+function resetLoop() {
+    if(shapesUsadas == shapesJugadas()) {
+        resetGame();
+    }
+    
+}
+
 // MOUSE CLICK
 function mouseDown(event) {
     let x = event.clientX - 30;
@@ -247,36 +266,50 @@ function fichaDentroTablero(shape, numShape) {
         checkTurnoAddShape(entradas[0], numShape, shape);
         setTurno();
         shape.setUsada(true);
+        shapesUsadas++;
+        setTimeout(resetLoop, 180000);
     }
     else if(entradas[1].checkShapeOn(shape) && !entradas[1].isColumnaCompleta()) {
         checkTurnoAddShape(entradas[1], numShape, shape);
         setTurno();
         shape.setUsada(true);
+        shapesUsadas++;
+        setTimeout(resetLoop, 180000);
     }
     else if(entradas[2].checkShapeOn(shape) && !entradas[2].isColumnaCompleta()) {
         checkTurnoAddShape(entradas[2], numShape, shape);
         setTurno();
         shape.setUsada(true);
+        shapesUsadas++;
+        setTimeout(resetLoop, 180000);
     }
     else if(entradas[3].checkShapeOn(shape) && !entradas[3].isColumnaCompleta()) {
         checkTurnoAddShape(entradas[3], numShape, shape);
         setTurno();
         shape.setUsada(true);
+        shapesUsadas++;
+        setTimeout(resetLoop, 180000);
     }
     else if(entradas[4].checkShapeOn(shape) && !entradas[4].isColumnaCompleta()) {
         checkTurnoAddShape(entradas[4], numShape, shape);
         setTurno();
         shape.setUsada(true);
+        shapesUsadas++;
+        setTimeout(resetLoop, 180000);
     }
     else if(entradas[5].checkShapeOn(shape) && !entradas[5].isColumnaCompleta()) {
         checkTurnoAddShape(entradas[5], numShape, shape);
         setTurno();
         shape.setUsada(true);
+        shapesUsadas++;
+        setTimeout(resetLoop, 180000);
     }
     else if(entradas[6].checkShapeOn(shape) && !entradas[6].isColumnaCompleta()) {
         checkTurnoAddShape(entradas[6], numShape, shape);
         setTurno();
         shape.setUsada(true);
+        shapesUsadas++;
+        setTimeout(resetLoop, 180000);
     }
     else {
         shape.backPosicionInicial();

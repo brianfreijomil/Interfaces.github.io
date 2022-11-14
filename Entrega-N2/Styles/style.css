@@ -699,6 +699,26 @@ footer .img-logo {
 
 }
 
+.btn-5-linea {
+    position: absolute;
+    top: 12%;
+    left: 4%;
+    margin-top: 5%;
+    background-color: rgb(5, 167, 5);
+    color: aliceblue;
+
+}
+
+.btn-6-linea {
+    position: absolute;
+    top: 12%;
+    left: 11%;
+    margin-top: 5%;
+    background-color: rgb(5, 167, 5);
+    color: aliceblue;
+
+}
+
 .pre-game {
     position: relative;
     width: 900px;
