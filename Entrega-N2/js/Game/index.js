@@ -6,12 +6,13 @@ let ctx = canvas.getContext('2d');
 let headerH = document.getElementById("header2");
 let breadcrumH = document.getElementById("breadcrum");
 document.getElementById("btn-play-again").addEventListener('click', hiddenWinner);
+let imgFondoCanvas = document.getElementById("fondoCanvas");
 let imgP1 = document.getElementById('player1'); 
 let imgP2 = document.getElementById('player2');
 let imgTurno1 = document.getElementById('turno1');
 let imgTurno2 = document.getElementById('turno2');
-let img1 = document.getElementById('bicho'); 
-let img2 = document.getElementById('messi');
+let img1 = document.getElementById('messi'); 
+let img2 = document.getElementById('bicho');
 
 let shapes = [];
 let entradas = [];
@@ -35,7 +36,7 @@ let cantPos = 6;
 
 //INICIO JUEGO
 function init() {
-    addPlayers("El Bicho", "The GOAT");
+    addPlayers("The GOAT", "El Bicho");
     addEntradas(entradas, 150, 225, cantEntradas);
     addTablero(cantPos);
     addShape(shapes, 190, 50, jugador, cantShapes);
@@ -92,13 +93,16 @@ function hiddenWinner() {
 // DIBUJO ELEMENTOS DEL JUEGO (entradas, tablero, fichas)
 function drawElements() {
     clearCanvas();
-    drawPlayers(imgP1,60,80,100,100);
-    drawPlayers(imgP2,730,80,100,100);
+    drawImg(imgFondoCanvas,0,0,900,500);
+    drawImg(imgP1,60,80,100,100);
+    drawImg(imgP2,730,80,100,100);
     if(turno == 1) {
-        drawTurno(imgTurno1,350,40,200,30);
+        ctx.clearRect(350,40,200,30);
+        drawImg(imgTurno1,350,40,200,30);
     }
     else {
-        drawTurno(imgTurno2,350,40,200,30);
+        ctx.clearRect(350,40,200,30);
+        drawImg(imgTurno2,350,40,200,30);
     }
     entradas.forEach(entrada => {
         entrada.draw();
@@ -112,13 +116,7 @@ function drawElements() {
     }
 }
 
-function drawPlayers(img, x, y, w, h) { 
-    ctx.drawImage(img, x, y, w, h);
-    ctx.closePath();
-}
-
-function drawTurno(img,x,y,w,h) {
-    ctx.clearRect(x,y,w,h);
+function drawImg(img,x,y,w,h) {
     ctx.drawImage(img, x, y, w, h);
     ctx.closePath();
 }
@@ -189,9 +187,7 @@ function addTablero(cantPosiciones) {
 // MOUSE CLICK
 function mouseDown(event) {
     let x = event.clientX - 30;
-    console.log(x);
     let y = event.clientY - 128;
-    console.log(y);
     for (let i = 0; i < shapes.length; i++) {
         if(shapes[i].checkSelected(x,y)) { //chequeo si fue seleccionada
             if(!shapes[i].getUsada()) { //chequeo que no se haya usado
@@ -247,37 +243,37 @@ function mouseUp() {
 //CUANDO INSERTO FICHA EN LA ENTRADA, CAMBIO TURNO
 function fichaDentroTablero(shape, numShape) {
 
-    if(entradas[0].checkShapeOn(shape)) {
+    if(entradas[0].checkShapeOn(shape) && !entradas[0].isColumnaCompleta()) {
         checkTurnoAddShape(entradas[0], numShape, shape);
         setTurno();
         shape.setUsada(true);
     }
-    else if(entradas[1].checkShapeOn(shape)) {
+    else if(entradas[1].checkShapeOn(shape) && !entradas[1].isColumnaCompleta()) {
         checkTurnoAddShape(entradas[1], numShape, shape);
         setTurno();
         shape.setUsada(true);
     }
-    else if(entradas[2].checkShapeOn(shape)) {
+    else if(entradas[2].checkShapeOn(shape) && !entradas[2].isColumnaCompleta()) {
         checkTurnoAddShape(entradas[2], numShape, shape);
         setTurno();
         shape.setUsada(true);
     }
-    else if(entradas[3].checkShapeOn(shape)) {
+    else if(entradas[3].checkShapeOn(shape) && !entradas[3].isColumnaCompleta()) {
         checkTurnoAddShape(entradas[3], numShape, shape);
         setTurno();
         shape.setUsada(true);
     }
-    else if(entradas[4].checkShapeOn(shape)) {
+    else if(entradas[4].checkShapeOn(shape) && !entradas[4].isColumnaCompleta()) {
         checkTurnoAddShape(entradas[4], numShape, shape);
         setTurno();
         shape.setUsada(true);
     }
-    else if(entradas[5].checkShapeOn(shape)) {
+    else if(entradas[5].checkShapeOn(shape) && !entradas[5].isColumnaCompleta()) {
         checkTurnoAddShape(entradas[5], numShape, shape);
         setTurno();
         shape.setUsada(true);
     }
-    else if(entradas[6].checkShapeOn(shape)) {
+    else if(entradas[6].checkShapeOn(shape) && !entradas[6].isColumnaCompleta()) {
         checkTurnoAddShape(entradas[6], numShape, shape);
         setTurno();
         shape.setUsada(true);
@@ -303,7 +299,8 @@ function checkTurnoAddShape(entrada, numShape, shape) {
         if(checkShapeSeleccionada(numShape) == 1) {
             if(turno == 1) {
                 jugador1.addShape(shape);
-                nuevaFichaEnTablero(entrada, shape);
+                entrada.newShape(shape);
+                checkWinner(shape);
             }
             else {
                 shape.setIsSelected(false);
@@ -312,7 +309,8 @@ function checkTurnoAddShape(entrada, numShape, shape) {
         else {
             if(turno == 2) {
                 jugador2.addShape(shape);
-                nuevaFichaEnTablero(entrada, shape);
+                entrada.newShape(shape);
+                checkWinner(shape);
             }
             else {
                 shape.setIsSelected(false);
@@ -352,12 +350,14 @@ function checkWinner(shape) {
                     console.log("Gano "+ duenioShape.getNombre());
                     showWinner(duenioShape);
                 }
-                /*else if(checkWinnerDiagonal1(i, j, duenioShape)) {
-                    console.log("gano alguien");
+                else if(checkWinnerDiagonal1(i, j, duenioShape)) {
+                    console.log("Gano "+ duenioShape.getNombre());
+                    showWinner(duenioShape);
                 }
                 else if(checkWinnerDiagonal2(i, j, duenioShape)) {
-                    console.log("gano alguien");
-                }*/
+                    console.log("Gano "+ duenioShape.getNombre());
+                    showWinner(duenioShape);
+                }
                 
             }
             
@@ -387,8 +387,6 @@ function checkWinnerVertical(numEntrada, numPosicion, duenio) {
 }
 
 function checkWinnerDiagonal1(numEntrada, numPosicion, duenio) {
-    //console.log(sumaDiagonalHaciaArriba1(numEntrada, numPosicion, duenio));
-    //console.log(sumaDiagonalHaciaAbj1(numEntrada, numPosicion, duenio));
     if(sumaDiagonalHaciaArriba1(numEntrada, numPosicion, duenio) + sumaDiagonalHaciaAbj1(numEntrada, numPosicion, duenio) == 4) {
         return true;
     }
@@ -398,8 +396,6 @@ function checkWinnerDiagonal1(numEntrada, numPosicion, duenio) {
 }
 
 function checkWinnerDiagonal2(numEntrada, numPosicion, duenio) {
-    console.log(sumaDiagonalHaciaArriba2(numEntrada, numPosicion, duenio));
-    console.log(sumaDiagonalHaciaAbj2(numEntrada, numPosicion, duenio));
     if(sumaDiagonalHaciaArriba2(numEntrada, numPosicion, duenio) + sumaDiagonalHaciaAbj2(numEntrada, numPosicion, duenio) == 4) {
         return true;
     }
@@ -408,71 +404,14 @@ function checkWinnerDiagonal2(numEntrada, numPosicion, duenio) {
     }
 }
 
-function sumaDiagonalHaciaArriba2(numEntrada, numPosicion, duenio) {
-    let i = numEntrada;
-    let pos = 0;
-    let suma=0;
-    let seguido=true;
-    while ((i < entradas.length)&&(pos<cantPosiciones)&&(seguido)) {
-        let entrada = entradas[i];
-        let posicion = entrada.getPosiciones()[numPosicion+pos];
-        if(posicion.getShape() !== null) {
-            if(posicion.getShape().getDuenio() == duenio) {
-                suma+=1;
-                if(suma == 4) {
-                    seguido = false;
-                }
-            }
-            else {
-                seguido = false;
-            }
-        }
-        else {
-            seguido = false;
-        }
-        i++;
-        pos++;
-    }
-    return suma-1;
-}
-
-function sumaDiagonalHaciaAbj2(numEntrada, numPosicion, duenio) {
-    let i = numEntrada;
-    let pos=0;
-    let suma=0;
-    let seguido=true;
-    while ((i > -1)&&(pos>-1)&&(seguido)) {
-        let entrada = entradas[i];
-        console.log(pos);
-        let posicion = entrada.getPosiciones()[numPosicion-pos];
-        if(posicion.getShape() !== null) {
-            if(posicion.getShape().getDuenio() == duenio) {
-                suma+=1;
-                if(suma == 4) {
-                    seguido = false;
-                }
-            }
-            else {
-                seguido = false;
-            }
-        }
-        else {
-            seguido = false;
-        }
-        i--;
-        pos++;
-    }
-    return suma;
-}
-
 function sumaDiagonalHaciaArriba1(numEntrada, numPosicion, duenio) {
+    let pos=numPosicion;
     let i = numEntrada;
-    let pos = 0;
     let suma=0;
     let seguido=true;
-    while ((i > -1)&&(pos>-1)&&(seguido)) {
+    while ((i > -1)&&(pos<entradas[i].posiciones.length)&&(seguido)) {
         let entrada = entradas[i];
-        let posicion = entrada.posiciones[numPosicion+pos];
+        let posicion = entrada.posiciones[pos];
         if(posicion.getShape() !== null) {
             if(posicion.getShape().getDuenio() == duenio) {
                 suma+=1;
@@ -495,12 +434,12 @@ function sumaDiagonalHaciaArriba1(numEntrada, numPosicion, duenio) {
 
 function sumaDiagonalHaciaAbj1(numEntrada, numPosicion, duenio) {
     let i = numEntrada;
-    let pos = 0;
+    let pos = numPosicion;
     let suma=0;
     let seguido=true;
-    while ((i < entradas.length)&&(pos<cantPosiciones)&&(seguido)) {
+    while ((i < entradas.length)&&(pos>-1)&&(seguido)) {
         let entrada = entradas[i];
-        let posicion = entrada.getPosiciones()[numPosicion-pos];
+        let posicion = entrada.posiciones[pos];
         if(posicion.getShape() !== null) {
             if(posicion.getShape().getDuenio() == duenio) {
                 suma+=1;
@@ -516,6 +455,62 @@ function sumaDiagonalHaciaAbj1(numEntrada, numPosicion, duenio) {
             seguido = false;
         }
         i++;
+        pos--;
+    }
+    return suma;
+}
+
+function sumaDiagonalHaciaArriba2(numEntrada, numPosicion, duenio) {
+    let i = numEntrada;
+    let pos = numPosicion;
+    let suma=0;
+    let seguido=true;
+    while ((i < entradas.length)&&(pos<entradas[i].posiciones.length)&&(seguido)) {
+        let entrada = entradas[i];
+        let posicion = entrada.posiciones[pos];
+        if(posicion.getShape() !== null) {
+            if(posicion.getShape().getDuenio() == duenio) {
+                suma+=1;
+                if(suma == 4) {
+                    seguido = false;
+                }
+            }
+            else {
+                seguido = false;
+            }
+        }
+        else {
+            seguido = false;
+        }
+        i++;
+        pos++;
+    }
+    return suma-1;
+}
+
+function sumaDiagonalHaciaAbj2(numEntrada, numPosicion, duenio) {
+    let i = numEntrada;
+    let pos=numPosicion;
+    let suma=0;
+    let seguido=true;
+    while ((i > -1)&&(pos>-1)&&(seguido)) {
+        let entrada = entradas[i];
+        let posicion = entrada.posiciones[pos];
+        if(posicion.getShape() !== null) {
+            if(posicion.getShape().getDuenio() == duenio) {
+                suma+=1;
+                if(suma == 4) {
+                    seguido = false;
+                }
+            }
+            else {
+                seguido = false;
+            }
+        }
+        else {
+            seguido = false;
+        }
+        i--;
         pos--;
     }
     return suma;

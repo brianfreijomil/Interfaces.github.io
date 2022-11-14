@@ -15,6 +15,23 @@ class Entrada {
         return this.posiciones;
     }
 
+    isColumnaCompleta() {
+        let i = 0;
+        let suma = 0;
+        while (i < this.posiciones.length) {
+            if(this.posiciones[i].getShape()) {
+                suma++;
+            }
+            i++;
+        }
+        if(suma == this.posiciones.length) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     cleanPosiciones() {
         for (let i = 0; i < this.posiciones.length; i++) {
             this.posiciones[i].setShape(null);
@@ -50,14 +67,14 @@ class Entrada {
 
     newShape(shape) {
         if(!shape.getUsada()) {
-            for(let i = 0; i<=this.posiciones.length-1; i++){
+            for(let i = 0; i<this.posiciones.length; i++){
                 let posicion = this.posiciones[i];
                 let xPos = posicion.getX() + (posicion.getW() / 2);
                 let yPos = posicion.getY() + (posicion.getH() / 2);
                 if(!posicion.getShape()) {
                     posicion.setShape(shape);
                     shape.goPosition(xPos, yPos);
-                    i = this.posiciones[i]+1;
+                    i = this.posiciones.length;
                 }
             }
         }
