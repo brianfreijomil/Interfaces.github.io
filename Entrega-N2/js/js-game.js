@@ -145,6 +145,17 @@ function toggleShare() {
     document.querySelector(".share-options").classList.toggle("show-share");
 }
 
+//show game
+let btnPlay = document.getElementById("btnPlay");
+btnPlay.addEventListener('click', showGame);
+
+function showGame() {
+  document.getElementById("preGame").classList.add("hide-pre-game");
+  document.getElementById("preGame").classList.remove("pre-game");
+  document.getElementById("Mycanvas").classList.add("canvas");
+  document.getElementById("Mycanvas").classList.remove("hide-canvas");
+}
+
 //carrusel 4 en linea-------------------------------------------------------
 const prevGame = document.querySelector(".prevGame");
 const nextGame = document.querySelector(".nextGame");

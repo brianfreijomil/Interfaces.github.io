@@ -653,6 +653,14 @@ footer .img-logo {
     background-size: cover;
 }
 
+.hide-canvas {
+    display: none;
+}
+
+.canvas {
+    display: flex;
+}
+
 .winner {
     display: none;
 }
@@ -691,7 +699,22 @@ footer .img-logo {
 
 }
 
-/*.game button {
+.pre-game {
+    position: relative;
+    width: 900px;
+    height: 100%;
+}
+
+.hide-pre-game {
+    display: none;
+}
+
+.pre-game img {
+    width: 100%;
+    height: 100%;
+}
+
+.pre-game button {
     position: absolute;
     top: 45%;
     left: 40%;
@@ -702,7 +725,7 @@ footer .img-logo {
     color: #d6a700;
     transition: all 500ms ease;
 }
-.game button:hover {
+.pre-game button:hover {
     top: 43%;
     left: 38%;
     width: 23%;
@@ -712,7 +735,7 @@ footer .img-logo {
     background-color: #d6a700;
     border: solid 1px #d6a700;
     box-shadow: 0 0 10px #d6a700, 0 0 20px #d6a700, 0 0 20px #d6a700;
-}*/
+}
 
 .help-game {
     display: flex;
