@@ -8,7 +8,7 @@
     <title>4 en linea Messi vs Cristiano</title>
 </head>
 <body>
-    <div class="header-2"></div>
+    <div class="header-2" id="header2"></div>
     <header>
         <div class="container-logo">
             <div class="img-logo">
@@ -33,7 +33,7 @@
             </ul>
         </div>
     </header>
-    <section class="breadcrum">
+    <section class="breadcrum" id="breadcrum">
         <ul>
             <li><a href="home.html"> Home > </a></li>
             <li><a href="#"> Adventure > </a></li>
@@ -41,10 +41,28 @@
         </ul>
     </section>
     <div class="container-game">
-        <div class="game">
-            <img src="./Entrega-N2/assets/img/4-en-linea/4 en linea customizado.png" alt="img-juego">
-            <button>PLAY</button>
+      <div class="game">
+        <canvas class="canvas" id="Mycanvas" width="900" height="500">
+          <img class="turno1" id="turno1" src="./Entrega-N2/assets/img/4-en-linea/game/Turno Player 1.png" alt="" srcset="">
+          <img class="turno2" id="turno2" src="./Entrega-N2/assets/img/4-en-linea/game/Turno Player 2.png" alt="" srcset="">
+          <img class="img_player" id="player1" src="./Entrega-N2/assets/img/4-en-linea/game/Ellipse 11.png" alt="" srcset="">
+          <img class="img_player2" id="player2" src="./Entrega-N2/assets/img/4-en-linea/game/Ellipse 10.png" alt="" srcset="">
+          <img class="img_shape" id="bicho" src="./Entrega-N2/assets/img/4-en-linea/game/Ellipse 7.png" alt="" srcset="">
+          <img id="messi" src="./Entrega-N2/assets/img/4-en-linea/game/Ellipse 8.png" alt="">
+          <img id="circuloVerde" src="./Entrega-N2/assets/img/4-en-linea/game/circuloVerde.png" alt="" srcset="">
+          <img id="circuloBordo" src="./Entrega-N2/assets/img/4-en-linea/game/circuloBordo.png" alt="" srcset="">
+        </canvas>
+        <div class="menu-game" id="menu-game"></div>
+        <div></div>
+        <div class="winner" id="winner">
+          <p id="text-winner">You Win!</p>
+          <p>1</p>
         </div>
+        <button id="btn1">6x7</button>
+        <button id="btn2">7x8</button>
+        <button id="btn3">8x9</button>
+        <button class="btn-play-again" id="btn-play-again">Restart game</button>
+      </div>
         <section class="help-game">
             <h4>How to play</h4>
             <p>On each turn, each player places a token of their color in a column and it falls to the first available square. The one who manages to place 4 tiles of the same color in a row horizontally, vertically or obliquely wins. If no one succeeds, the game ends in a draw.
@@ -394,6 +412,11 @@
     <div id="img-big8" class="hide-img-big8"><img src="./Entrega-N2/assets/img/4-en-linea/big image game 8.png" alt=""></div>
     <div id="img-big9" class="hide-img-big9"><img src="./Entrega-N2/assets/img/4-en-linea/big image game 9.png" alt=""></div>
     <div id="sombra-img-big"></div>
+    <script src="./Entrega-N2/js/Game/PosicionTablero.js"></script>
+    <script src="./Entrega-N2/js/Game/Jugador.js"></script>
+    <script src="./Entrega-N2/js/Game/Entrada.js"></script>
+    <script src="./Entrega-N2/js/Game/Shape.js"></script>
+    <script src="./Entrega-N2/js/Game/index.js"></script>
     <script type="text/javascript" src="./Entrega-N2/js/javascript.js"></script>  
     <script type="text/javascript" src="./Entrega-N2/js/js-game.js"></script>    
 </body>

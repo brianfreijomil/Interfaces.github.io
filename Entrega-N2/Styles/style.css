@@ -638,13 +638,60 @@ footer .img-logo {
     height: 500px;
 }
 
+
+/*Style Game 4 en linea*/
+
+
+
+
 .game {
-    position: relative;
     width: 900px;
-    height: 100%;
+    height: 500px;
+    background-color: #000000;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.game button {
+.winner {
+    display: none;
+}
+
+.winner-show {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 200px;
+    width: 600px;
+    background-color: rgba(33, 99, 164, 0.8);
+    margin: 0px;
+    padding: 0px;
+    top: 38%;
+    left: 13%;
+    text-align: center;
+    border-radius: 10px;
+    border: solid 3px white;
+}
+
+.winner-show p {
+    margin: 0%;
+    font-size: 400%;
+}
+
+
+.btn-play-again {
+    position: absolute;
+    top: 12%;
+    left: 60%;
+    margin-top: 5%;
+    background-color: rgb(5, 167, 5);
+    color: aliceblue;
+
+}
+
+/*.game button {
     position: absolute;
     top: 45%;
     left: 40%;
@@ -665,12 +712,7 @@ footer .img-logo {
     background-color: #d6a700;
     border: solid 1px #d6a700;
     box-shadow: 0 0 10px #d6a700, 0 0 20px #d6a700, 0 0 20px #d6a700;
-}
-
-.game img {
-    width: 100%;
-    height: 100%;
-}
+}*/
 
 .help-game {
     display: flex;
