@@ -13,7 +13,8 @@ class Shape {
         this.duenio = duenio;
         this.usada = false;
     }
-
+    
+    //get
     getRadio() {
         return this.r;
     }
@@ -46,6 +47,7 @@ class Shape {
         this.usada = estado;
     }
 
+    //dibuja la ficha
     draw(img) {
         this.ctx.fillStyle = "FFFFFF";
         ctx.beginPath();
@@ -54,32 +56,32 @@ class Shape {
         ctx.drawImage(img, this.getX()-20, this.getY()-20, 40, 40);
         ctx.closePath();
     }
-    
+    //controla si fue seleccionada
     checkSelected(x,y) {
         let dx = this.x - x;
         let dy = this.y - y;
         return Math.sqrt(dx * dx  +   dy * dy) < this.r;
     }
-
+    //vuelve a su posicion inicial
     backPosicionInicial() {
         this.x = this.posXinicial;
         this.y = this.posYinicial;
     }
-
+    //se dirije a una posicion especifica(posicion del tablero)
     goPosition(x, y) {
         this.x = x;
         this.y = y;
     }
-    
+    //se mueve a esa direccion
     move(x,y) {
         this.x = x - this.r/2;
         this.y = y - this.r/2;
     }
-
+    //retorna si fue seleccionada
     isSelected() {
         return this.selected;
     }
-
+    
     setIsSelected(selected) {
         this.selected = selected;
     }

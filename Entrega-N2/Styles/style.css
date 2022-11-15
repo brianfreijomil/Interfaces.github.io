@@ -661,6 +661,39 @@ footer .img-logo {
     display: flex;
 }
 
+.menu-game {
+    display: none;
+}
+
+.menu-game-show {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 200px;
+    width: 600px;
+    background-color: rgba(18, 85, 15);
+    margin: 0px;
+    padding: 0px;
+    top: 38%;
+    left: 13%;
+    text-align: center;
+    border-radius: 10px;
+    border: solid 3px white;
+}
+
+.menu-game-show div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-game-show p {
+    margin: 0%;
+    font-size: 400%;
+}
+
 .winner {
     display: none;
 }
@@ -688,6 +721,14 @@ footer .img-logo {
     font-size: 400%;
 }
 
+.btn-menu {
+    width: 150px;
+    height: 30px;
+    background-color: rgb(5, 167, 5);
+    color: aliceblue;
+    border: solid 1px white;
+    margin: 10px;
+}
 
 .btn-play-again {
     position: absolute;
@@ -700,22 +741,23 @@ footer .img-logo {
 }
 
 .btn-5-linea {
-    position: absolute;
-    top: 12%;
-    left: 4%;
-    margin-top: 5%;
+    width: 150px;
+    height: 30px;
     background-color: rgb(5, 167, 5);
     color: aliceblue;
+    border: solid 1px white;
+    margin: 10px;
 
 }
 
-.btn-6-linea {
-    position: absolute;
-    top: 12%;
-    left: 11%;
-    margin-top: 5%;
+.classic {
+    text-align: center;
+    width: 150px;
+    height: 30px;
     background-color: rgb(5, 167, 5);
     color: aliceblue;
+    border: solid 1px white;
+    margin: 20px;
 
 }
 

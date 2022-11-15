@@ -3,6 +3,8 @@
 class PosicionTablero {
 
     constructor(x, y, w, h, ctx) {
+        this.xInicial = x;
+        this.yInicial = y;
         this.x = x;
         this.y = y;
         this.w = w;
@@ -11,6 +13,7 @@ class PosicionTablero {
         this.shape = null;
     }
 
+    //get
     getX() {
         return this.x;
     }
@@ -35,6 +38,16 @@ class PosicionTablero {
         this.shape = shape;
     }
 
+    move(x) {
+        this.x = this.x - x;
+    }
+
+    backPosicionInicial() {
+        this.x = this.xInicial;
+        this.y = this.yInicial;
+    }
+
+    //dibuja posicion
     draw() {
         let img = document.getElementById('circuloVerde');
         ctx.fillStyle = '#0E8B16';
@@ -42,6 +55,7 @@ class PosicionTablero {
         ctx.drawImage(img, this.x+5, this.y+5, this.w-10, this.h-10);
     }
 
+    //chequea si tiene una ficha a dentro
     checkShapeInside(shape) {
         let ShapeX = shape.getX();
         let ShapeY = shape.getY();

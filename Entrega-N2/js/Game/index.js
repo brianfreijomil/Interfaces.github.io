@@ -6,6 +6,7 @@ let ctx = canvas.getContext('2d');
 let headerH = document.getElementById("header2");
 let breadcrumH = document.getElementById("breadcrum");
 document.getElementById("btn-play-again").addEventListener('click', hiddenWinner);
+document.getElementById("btn-menu").addEventListener('click', showMenu);
 let imgFondoCanvas = document.getElementById("fondoCanvas");
 let imgP1 = document.getElementById('player1'); 
 let imgP2 = document.getElementById('player2');
@@ -30,10 +31,12 @@ let heigthCanvas = 500;
 let cantShapes = 36;
 let cantEntradas = 7;
 let cantPos = 6;
+let condicionWinner = 4;
 
-//let btn1 = document.getElementById("btn1").addEventListener('click', );
-//let btn2 = document.getElementById("btn2").addEventListener('click', );
-//let btn3 = document.getElementById("btn3").addEventListener('click', );
+let btn5linea = document.getElementById("btn-5-linea");
+btn5linea.addEventListener('click', extends5EnLinea);
+let clasic = document.getElementById("classic");
+clasic.addEventListener('click', classic4EnLinea);
 
 //INICIO JUEGO
 function init() {
@@ -47,7 +50,44 @@ function init() {
     setInterval(drawElements,20);
 }
 
+function extends5EnLinea() {
+    hiddenMenu();
+    let dimy = 7;
+    condicionWinner = 5;
+    let x = entradas[6].getX() + 50;
+    let y = entradas[6].getY();
+    let newEntrada = new Entrada(x, y, 50, 50, ctx);
+    entradas.push(newEntrada);
+    newEntrada.addPosiciones(dimy);
+    for (let i = 0; i < entradas.length; i++) {
+        entradas[i].addPosicion();
+        entradas[i].moveEntrada(25,50);
+        entradas[i].movePosiciones(25);
+        
+    }
+    newEntrada.draw();
+    hiddenWinner(); 
+}
 
+function classic4EnLinea() {
+    hiddenMenu();
+    if(entradas.length == 8) {
+        entradas.pop();
+    }
+    if(condicionWinner == 5) {
+        condicionWinner = 4;
+    }
+    console.log(entradas[0].posiciones.length)
+    if(entradas[0].posiciones.length > 6) {
+        for (let i = 0; i < entradas.length; i++) {
+            entradas[i].removePosicion(); 
+            entradas[i].backPosicionInicial();
+        }
+    }
+    hiddenWinner();
+}
+
+//dibuja imagen de fondo
 function drawImgFondo() {
     ctx.fillStyle = 'red';
     ctx.fillRect(0, 0, widthCanvas, heigthCanvas);   
@@ -60,7 +100,7 @@ function initEvents() {
     canvas.onmouseup = mouseUp;
 }
 
-
+//resetea juego
 function resetGame() {
     jugador1.cleanShapes();
     jugador2.cleanShapes();
@@ -74,6 +114,20 @@ function resetGame() {
     turno = 1;
 }
 
+//
+function showMenu() {
+    hiddenWinner();
+    document.getElementById("menu-game").classList.remove("menu-game");
+    document.getElementById("menu-game").classList.add("menu-game-show");
+}
+
+function hiddenMenu() {
+    document.getElementById("menu-game").classList.remove("menu-game-show");
+    document.getElementById("menu-game").classList.add("menu-game");
+}
+
+
+//muestra quien gano
 function showWinner(winner) {
     document.getElementById("winner").classList.remove("winner");
     document.getElementById("winner").classList.add("winner-show");
@@ -84,7 +138,7 @@ function showWinner(winner) {
         document.getElementById("text-winner").innerHTML = winner.getNombre() + " Win"
     }
 }
-
+//oculta cartel de ganador
 function hiddenWinner() {
     document.getElementById("winner").classList.remove("winner-show");
     document.getElementById("winner").classList.add("winner");
@@ -117,6 +171,7 @@ function drawElements() {
     }
 }
 
+//dibuja una imagen
 function drawImg(img,x,y,w,h) {
     ctx.drawImage(img, x, y, w, h);
     ctx.closePath();
@@ -172,7 +227,7 @@ function addShape(arr, y, x, jugador) {
 function addEntradas(arr, y, x) {
     for (let i = 0; i < cantEntradas; i++) {
         x+=50;
-        let entrada = new Entrada(x, y, 50, 50, 7, 6, ctx);
+        let entrada = new Entrada(x, y, 50, 50, ctx);
         arr.push(entrada);
     }
 }
@@ -196,6 +251,7 @@ function shapesJugadas() {
     return suma;
 }
 
+//resetea el juego luego de 3 minutos en inactividad
 function resetLoop() {
     if(shapesUsadas == shapesJugadas()) {
         resetGame();
@@ -311,6 +367,18 @@ function fichaDentroTablero(shape, numShape) {
         shapesUsadas++;
         setTimeout(resetLoop, 180000);
     }
+    else if(entradas.length > 7) {
+        if(entradas[entradas.length-1].checkShapeOn(shape) && !entradas[entradas.length-1].isColumnaCompleta()) {
+            checkTurnoAddShape(entradas[entradas.length-1], numShape, shape);
+            setTurno();
+            shape.setUsada(true);
+            shapesUsadas++;
+            setTimeout(resetLoop, 180000);
+        }
+        else {
+            shape.backPosicionInicial();
+        }
+    }
     else {
         shape.backPosicionInicial();
     }
@@ -368,6 +436,7 @@ function checkShapeSeleccionada(numShape) {
     }
 }
 
+//checkea si se hizo 4 en linea vertical horizontal o diagonalmente
 function checkWinner(shape) {
     for (let i = 0; i < entradas.length; i++) {
         let entrada = entradas[i];
@@ -376,19 +445,15 @@ function checkWinner(shape) {
             if(posicion.getShape() == shape) {
                 let duenioShape = shape.getDuenio();
                 if(checkWinnerHorizontal(i, j, duenioShape)) {
-                    console.log("Gano "+ duenioShape.getNombre());
                     showWinner(duenioShape);
                 }
                 else if(checkWinnerVertical(i, j, duenioShape)) {
-                    console.log("Gano "+ duenioShape.getNombre());
                     showWinner(duenioShape);
                 }
                 else if(checkWinnerDiagonal1(i, j, duenioShape)) {
-                    console.log("Gano "+ duenioShape.getNombre());
                     showWinner(duenioShape);
                 }
                 else if(checkWinnerDiagonal2(i, j, duenioShape)) {
-                    console.log("Gano "+ duenioShape.getNombre());
                     showWinner(duenioShape);
                 }
                 
@@ -401,7 +466,7 @@ function checkWinner(shape) {
 
 // chequea 4 en linea horizontal
 function checkWinnerHorizontal(numEntrada, numPosicion, duenio) {
-    if(sumaHaciaIzq(numEntrada, numPosicion, duenio) + sumaHaciaDer(numEntrada, numPosicion, duenio) == 4) {
+    if(sumaHaciaIzq(numEntrada, numPosicion, duenio) + sumaHaciaDer(numEntrada, numPosicion, duenio) == condicionWinner) {
         return true;
     }
     else {
@@ -411,7 +476,7 @@ function checkWinnerHorizontal(numEntrada, numPosicion, duenio) {
 
 //chequea 4 en linea vertical
 function checkWinnerVertical(numEntrada, numPosicion, duenio) {
-    if(sumaHaciaArriba(numEntrada, numPosicion, duenio) + sumaHaciaAbj(numEntrada, numPosicion, duenio) == 4) {
+    if(sumaHaciaArriba(numEntrada, numPosicion, duenio) + sumaHaciaAbj(numEntrada, numPosicion, duenio) == condicionWinner) {
         return true;
     }
     else {
@@ -419,17 +484,18 @@ function checkWinnerVertical(numEntrada, numPosicion, duenio) {
     }
 }
 
+//chequea 4 en linea diagonal 1
 function checkWinnerDiagonal1(numEntrada, numPosicion, duenio) {
-    if(sumaDiagonalHaciaArriba1(numEntrada, numPosicion, duenio) + sumaDiagonalHaciaAbj1(numEntrada, numPosicion, duenio) == 4) {
+    if(sumaDiagonalHaciaArriba1(numEntrada, numPosicion, duenio) + sumaDiagonalHaciaAbj1(numEntrada, numPosicion, duenio) == condicionWinner) {
         return true;
     }
     else {
         return false;
     }
 }
-
+//chequea 4 en linea diagonal 2
 function checkWinnerDiagonal2(numEntrada, numPosicion, duenio) {
-    if(sumaDiagonalHaciaArriba2(numEntrada, numPosicion, duenio) + sumaDiagonalHaciaAbj2(numEntrada, numPosicion, duenio) == 4) {
+    if(sumaDiagonalHaciaArriba2(numEntrada, numPosicion, duenio) + sumaDiagonalHaciaAbj2(numEntrada, numPosicion, duenio) == condicionWinner) {
         return true;
     }
     else {
@@ -448,7 +514,7 @@ function sumaDiagonalHaciaArriba1(numEntrada, numPosicion, duenio) {
         if(posicion.getShape() !== null) {
             if(posicion.getShape().getDuenio() == duenio) {
                 suma+=1;
-                if(suma == 4) {
+                if(suma == condicionWinner) {
                     seguido = false;
                 }
             }
@@ -476,7 +542,7 @@ function sumaDiagonalHaciaAbj1(numEntrada, numPosicion, duenio) {
         if(posicion.getShape() !== null) {
             if(posicion.getShape().getDuenio() == duenio) {
                 suma+=1;
-                if(suma == 4) {
+                if(suma == condicionWinner) {
                     seguido = false;
                 }
             }
@@ -504,7 +570,7 @@ function sumaDiagonalHaciaArriba2(numEntrada, numPosicion, duenio) {
         if(posicion.getShape() !== null) {
             if(posicion.getShape().getDuenio() == duenio) {
                 suma+=1;
-                if(suma == 4) {
+                if(suma == condicionWinner) {
                     seguido = false;
                 }
             }
@@ -532,7 +598,7 @@ function sumaDiagonalHaciaAbj2(numEntrada, numPosicion, duenio) {
         if(posicion.getShape() !== null) {
             if(posicion.getShape().getDuenio() == duenio) {
                 suma+=1;
-                if(suma == 4) {
+                if(suma == condicionWinner) {
                     seguido = false;
                 }
             }
@@ -554,11 +620,11 @@ function sumaHaciaArriba(numEntrada, numPosicion, duenio) {
     let suma=0;
     let seguido=true;
     while ((i < entradas[numEntrada].getPosiciones().length)&&(seguido)) {
-        let posicion = entradas[numEntrada].getPosiciones()[i];
+        let posicion = entradas[numEntrada].posiciones[i];
         if(posicion.getShape() !== null) {
             if(posicion.getShape().getDuenio() == duenio) {
                 suma+=1;
-                if(suma == 4) {
+                if(suma == condicionWinner) {
                     seguido = false;
                 }
             }
@@ -579,11 +645,11 @@ function sumaHaciaAbj(numEntrada, numPosicion, duenio) {
     let suma=0;
     let seguido=true;
     while ((i > -1)&&(seguido)) {
-        let posicion = entradas[numEntrada].getPosiciones()[i];
+        let posicion = entradas[numEntrada].posiciones[i];
         if(posicion.getShape() !== null) {
             if(posicion.getShape().getDuenio() == duenio) {
                 suma+=1;
-                if(suma == 4) {
+                if(suma == condicionWinner) {
                     seguido = false;
                 }
             }
@@ -609,7 +675,7 @@ function sumaHaciaIzq(numEntrada, numPosicion, duenio) {
         if(posicion.getShape() !== null) {
             if(posicion.getShape().getDuenio() == duenio) {
                 suma+=1;
-                if(suma == 4) {
+                if(suma == condicionWinner) {
                     seguido = false;
                 }
             }
@@ -631,11 +697,11 @@ function sumaHaciaDer(numEntrada, numPosicion, duenio) {
     let seguido=true;
     while ((i < entradas.length)&&(seguido)) {
         let entrada = entradas[i];
-        let posicion = entrada.getPosiciones()[numPosicion];
+        let posicion = entrada.posiciones[numPosicion];
         if(posicion.getShape() !== null) {
             if(posicion.getShape().getDuenio() == duenio) {
                 suma+=1;
-                if(suma == 4) {
+                if(suma == condicionWinner) {
                     seguido = false;
                 }
             }
