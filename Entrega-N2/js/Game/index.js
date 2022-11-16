@@ -52,6 +52,7 @@ function init() {
 
 function extends5EnLinea() {
     hiddenMenu();
+    resetGame();
     let dimy = 7;
     condicionWinner = 5;
     let x = entradas[6].getX() + 50;
@@ -66,7 +67,6 @@ function extends5EnLinea() {
         
     }
     newEntrada.draw();
-    hiddenWinner(); 
 }
 
 function classic4EnLinea() {
@@ -84,7 +84,6 @@ function classic4EnLinea() {
             entradas[i].backPosicionInicial();
         }
     }
-    hiddenWinner();
 }
 
 //dibuja imagen de fondo
@@ -110,6 +109,19 @@ function resetGame() {
     for (let i = 0; i < shapes.length; i++) {
         shapes[i].backPosicionInicial();
         shapes[i].setUsada(false);   
+    }
+    if(entradas.length == 8) {
+        entradas.pop();
+    }
+    if(condicionWinner == 5) {
+        condicionWinner = 4;
+    }
+    console.log(entradas[0].posiciones.length)
+    if(entradas[0].posiciones.length > 6) {
+        for (let i = 0; i < entradas.length; i++) {
+            entradas[i].removePosicion(); 
+            entradas[i].backPosicionInicial();
+        }
     }
     turno = 1;
 }
