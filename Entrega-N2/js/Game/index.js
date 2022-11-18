@@ -1,12 +1,14 @@
 "use strict";
 
-
+//canvas
 let canvas = document.getElementById("Mycanvas");
 let ctx = canvas.getContext('2d');
-let headerH = document.getElementById("header2");
-let breadcrumH = document.getElementById("breadcrum");
+
+//botones del juego
 document.getElementById("btn-play-again").addEventListener('click', hiddenWinner);
 document.getElementById("btn-menu").addEventListener('click', showMenu);
+
+//imagenes del juego
 let imgFondoCanvas = document.getElementById("fondoCanvas");
 let imgP1 = document.getElementById('player1'); 
 let imgP2 = document.getElementById('player2');
@@ -14,6 +16,9 @@ let imgTurno1 = document.getElementById('turno1');
 let imgTurno2 = document.getElementById('turno2');
 let img1 = document.getElementById('messi'); 
 let img2 = document.getElementById('bicho');
+
+//timer
+let timer = document.getElementById("timer");
 
 let shapes = [];
 let entradas = [];
@@ -28,7 +33,7 @@ let imagenFondo;
 let widthCanvas = 900;
 let heigthCanvas = 500;
 
-let cantShapes = 36;
+let cantShapes = 42;
 let cantEntradas = 7;
 let cantPos = 6;
 let condicionWinner = 4;
@@ -40,14 +45,122 @@ clasic.addEventListener('click', classic4EnLinea);
 
 //INICIO JUEGO
 function init() {
+    addElementsGame();
+    drawGame(cantShapes);
+    initEvents();
+}
+
+// ---------------  AGREGO DE ELEMENTOS  --------------------------------------------//
+
+function addElementsGame() {
     addPlayers("The GOAT", "El Bicho");
     addEntradas(entradas, 150, 225, cantEntradas);
     addTablero(cantPos);
-    addShape(shapes, 190, 50, jugador, cantShapes);
-    drawImgFondo();
-    drawElements(cantShapes);
-    initEvents();
-    setInterval(drawElements,20);
+    addShapes(shapes, 50, 150, jugador, cantShapes);
+}
+
+// AGREGO JUGADOR
+function addPlayers(name1, name2) {
+    jugador1 = new Jugador(name1);
+    jugador2 = new Jugador(name2);
+}
+
+// AGREGO FICHA
+function addShapes(arr, x, y, jugador) {
+    for (let i = 0; i < cantShapes; i++) {
+        if(i < 21) {
+            jugador = jugador1;
+        }
+        else {
+            jugador = jugador2;
+        }
+        if(i==7) {
+            x += 60;
+            y = 150;
+        }
+        if(i==14) {
+            x += 60;
+            y = 150;
+        }
+        if(i==21) {
+            x+=550;
+            y = 150;
+        }
+        if(i==28) {
+            x+=60;
+            y = 150;
+        }
+        if(i==35) {
+            x+=60;
+            y = 150;
+        }
+        y+=45;
+        let shape = new Shape(x,y,ctx,jugador);
+        arr.push(shape);
+    }
+}
+
+// AGREGO ENTRADA 
+function addEntradas(arr, y, x) {
+    for (let i = 0; i < cantEntradas; i++) {
+        x+=50;
+        let entrada = new Entrada(x, y, 50, 50, ctx);
+        arr.push(entrada);
+    }
+}
+
+// AGREGO TABLERO
+function addTablero(cantPosiciones) {
+    for (let i = 0; i < entradas.length; i++) {
+        let entrada = entradas[i];
+        entrada.addPosiciones(cantPosiciones);
+    }
+}
+
+// ---------------  DIBUJO ELEMENTOS  --------------------------------------------//
+
+// DIBUJO ELEMENTOS DEL JUEGO (entradas, tablero, fichas)
+function drawGame() {
+    clearCanvas();
+    drawImg(imgFondoCanvas,0,0,900,500);
+    drawImg(imgP1,60,60,100,100);
+    drawImg(imgP2,730,60,100,100);
+    if(turno == 1) {
+        ctx.clearRect(350,40,200,30);
+        drawImg(imgTurno1,350,40,200,30);
+    }
+    else {
+        ctx.clearRect(350,40,200,30);
+        drawImg(imgTurno2,350,40,200,30);
+    }
+    entradas.forEach(entrada => {
+        entrada.draw();
+        entrada.drawPosiciones();
+    });
+    for(let i = 0; i<shapes.length; i++) {
+        shapes[i].draw(img1);
+        if (i>=cantShapes/2) {
+            shapes[i].draw(img2);
+        }
+    }
+}
+
+//dibuja una imagen
+function drawImg(img,x,y,w,h) {
+    ctx.drawImage(img, x, y, w, h);
+    ctx.closePath();
+}
+
+// BORRA TODO LO HECHO EN EL CANVAS
+function clearCanvas() {
+    ctx.clearRect(0, 0, 900, 600);
+}
+
+// INICIO EVENTOS DEL MOUSE
+function initEvents() {
+    canvas.onmousedown = mouseDown;
+    canvas.onmousemove = mouseMove;
+    canvas.onmouseup = mouseUp;
 }
 
 function extends5EnLinea() {
@@ -86,23 +199,8 @@ function classic4EnLinea() {
     }
 }
 
-//dibuja imagen de fondo
-function drawImgFondo() {
-    ctx.fillStyle = 'red';
-    ctx.fillRect(0, 0, widthCanvas, heigthCanvas);   
-}
-
-// INICIO EVENTOS DEL MOUSE
-function initEvents() {
-    canvas.onmousedown = mouseDown;
-    canvas.onmousemove = mouseMove;
-    canvas.onmouseup = mouseUp;
-}
-
 //resetea juego
 function resetGame() {
-    jugador1.cleanShapes();
-    jugador2.cleanShapes();
     for (let i = 0; i < entradas.length; i++) {
         entradas[i].cleanPosiciones();   
     }
@@ -126,13 +224,14 @@ function resetGame() {
     turno = 1;
 }
 
-//
+//muestro menu de opciones
 function showMenu() {
     hiddenWinner();
     document.getElementById("menu-game").classList.remove("menu-game");
     document.getElementById("menu-game").classList.add("menu-game-show");
 }
 
+//oculto menu de opciones
 function hiddenMenu() {
     document.getElementById("menu-game").classList.remove("menu-game-show");
     document.getElementById("menu-game").classList.add("menu-game");
@@ -157,100 +256,15 @@ function hiddenWinner() {
     resetGame();
 }
 
-// DIBUJO ELEMENTOS DEL JUEGO (entradas, tablero, fichas)
-function drawElements() {
-    clearCanvas();
-    drawImg(imgFondoCanvas,0,0,900,500);
-    drawImg(imgP1,60,80,100,100);
-    drawImg(imgP2,730,80,100,100);
-    if(turno == 1) {
-        ctx.clearRect(350,40,200,30);
-        drawImg(imgTurno1,350,40,200,30);
+// TIMER
+let contador = 60;
+const timeri = setInterval(()=>{
+    console.log(contador);
+    contador--;
+    if(contador==-1) {
+        clearInterval(timeri);
     }
-    else {
-        ctx.clearRect(350,40,200,30);
-        drawImg(imgTurno2,350,40,200,30);
-    }
-    entradas.forEach(entrada => {
-        entrada.draw();
-        entrada.drawPosiciones();
-    });
-    for(let i = 0; i<shapes.length; i++) {
-        shapes[i].draw(img1);
-        if (i>17) {
-            shapes[i].draw(img2);
-        }
-    }
-}
-
-//dibuja una imagen
-function drawImg(img,x,y,w,h) {
-    ctx.drawImage(img, x, y, w, h);
-    ctx.closePath();
-}
-
-// BORRA TODO LO HECHO EN EL CANVAS
-function clearCanvas() {
-    ctx.clearRect(0, 0, 900, 600);
-}
-
-// AGREGO JUGADOR
-function addPlayers(name1, name2) {
-    jugador1 = new Jugador(name1);
-    jugador2 = new Jugador(name2);
-}
-
-// AGREGO FICHA
-function addShape(arr, y, x, jugador) {
-    for (let i = 0; i < cantShapes; i++) {
-        if(i < 18) {
-            jugador = jugador1;
-        }
-        else {
-            jugador = jugador2;
-        }
-        if(i==6) {
-            x += 60;
-            y = 190;
-        }
-        if(i==12) {
-            x += 60;
-            y = 190;
-        }
-        if(i==18) {
-            x+=550;
-            y = 190;
-        }
-        if(i==24) {
-            x+=60;
-            y = 190;
-        }
-        if(i==30) {
-            x+=60;
-            y = 190;
-        }
-        y+=45;
-        let shape = new Shape(x,y,ctx,jugador);
-        arr.push(shape);
-    }
-}
-
-// AGREGO ENTRADA 
-function addEntradas(arr, y, x) {
-    for (let i = 0; i < cantEntradas; i++) {
-        x+=50;
-        let entrada = new Entrada(x, y, 50, 50, ctx);
-        arr.push(entrada);
-    }
-}
-
-// AGREGO TABLERO
-function addTablero(cantPosiciones) {
-    for (let i = 0; i < entradas.length; i++) {
-        let entrada = entradas[i];
-        entrada.addPosiciones(cantPosiciones);
-    }
-}
+},1000)
 
 //fichas jugadas
 function shapesJugadas() {
@@ -307,6 +321,7 @@ function mouseDown(event) {
 
 // MOUSE MOVIENDOSE
 function mouseMove(event) {
+    setInterval(drawGame,20);
     let x = event.clientX -15;
     let y = event.clientY - 118;
     for (let i = 0; i < shapes.length; i++) {
@@ -411,7 +426,6 @@ function setTurno() {
 function checkTurnoAddShape(entrada, numShape, shape) {
         if(checkShapeSeleccionada(numShape) == 1) {
             if(turno == 1) {
-                jugador1.addShape(shape);
                 entrada.newShape(shape);
                 checkWinner(shape);
             }
@@ -421,7 +435,6 @@ function checkTurnoAddShape(entrada, numShape, shape) {
         }
         else {
             if(turno == 2) {
-                jugador2.addShape(shape);
                 entrada.newShape(shape);
                 checkWinner(shape);
             }
@@ -432,20 +445,9 @@ function checkTurnoAddShape(entrada, numShape, shape) {
     
 }
 
-// entra ficha en tablero y se chequea 4 en linea
-function nuevaFichaEnTablero(entrada, shape) {
-    entrada.newShape(shape);
-    checkWinner(shape);
-}
-
-//RETORNA 1 SI LA FICHA AGARRADA ES DEL JUGADOR UNO Y 2 EN CASO CONTRARIO
+//RETORNA true SI LA FICHA AGARRADA ES DEL JUGADOR UNO Y false EN CASO CONTRARIO
 function checkShapeSeleccionada(numShape) {
-    if(numShape > 0 && numShape < 20) {
-        return 1;
-    }
-    else {
-        return 2;
-    }
+    return numShape > -1 && numShape < 21;
 }
 
 //checkea si se hizo 4 en linea vertical horizontal o diagonalmente
@@ -478,41 +480,21 @@ function checkWinner(shape) {
 
 // chequea 4 en linea horizontal
 function checkWinnerHorizontal(numEntrada, numPosicion, duenio) {
-    if(sumaHaciaIzq(numEntrada, numPosicion, duenio) + sumaHaciaDer(numEntrada, numPosicion, duenio) == condicionWinner) {
-        return true;
-    }
-    else {
-        return false;
-    }
+    return sumaHaciaIzq(numEntrada, numPosicion, duenio) + sumaHaciaDer(numEntrada, numPosicion, duenio) == condicionWinner;
 }
 
 //chequea 4 en linea vertical
 function checkWinnerVertical(numEntrada, numPosicion, duenio) {
-    if(sumaHaciaArriba(numEntrada, numPosicion, duenio) + sumaHaciaAbj(numEntrada, numPosicion, duenio) == condicionWinner) {
-        return true;
-    }
-    else {
-        return false;
-    }
+    return sumaHaciaArriba(numEntrada, numPosicion, duenio) + sumaHaciaAbj(numEntrada, numPosicion, duenio) == condicionWinner;
 }
 
 //chequea 4 en linea diagonal 1
 function checkWinnerDiagonal1(numEntrada, numPosicion, duenio) {
-    if(sumaDiagonalHaciaArriba1(numEntrada, numPosicion, duenio) + sumaDiagonalHaciaAbj1(numEntrada, numPosicion, duenio) == condicionWinner) {
-        return true;
-    }
-    else {
-        return false;
-    }
+    return sumaDiagonalHaciaArriba1(numEntrada, numPosicion, duenio) + sumaDiagonalHaciaAbj1(numEntrada, numPosicion, duenio) == condicionWinner;
 }
 //chequea 4 en linea diagonal 2
 function checkWinnerDiagonal2(numEntrada, numPosicion, duenio) {
-    if(sumaDiagonalHaciaArriba2(numEntrada, numPosicion, duenio) + sumaDiagonalHaciaAbj2(numEntrada, numPosicion, duenio) == condicionWinner) {
-        return true;
-    }
-    else {
-        return false;
-    }
+    return sumaDiagonalHaciaArriba2(numEntrada, numPosicion, duenio) + sumaDiagonalHaciaAbj2(numEntrada, numPosicion, duenio) == condicionWinner;
 }
 
 function sumaDiagonalHaciaArriba1(numEntrada, numPosicion, duenio) {
