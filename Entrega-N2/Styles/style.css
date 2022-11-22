@@ -641,9 +641,6 @@ footer .img-logo {
 
 /*Style Game 4 en linea*/
 
-
-
-
 .game {
     width: 900px;
     height: 500px;
@@ -661,6 +658,40 @@ footer .img-logo {
     display: flex;
 }
 
+.cont-timer {
+    position: absolute;
+    top: 21%;
+    left: 3%;
+}
+
+.turnoPlayer {
+    width: 120px;
+    position: absolute;
+    top: 21%;
+    left: 31%;
+    margin: 0%;
+    padding: 0px;
+    background-color: rgb(19, 85, 131);
+}
+
+.turnoPlayer .turno-text {
+    text-align: center;
+    margin: 5px;
+    padding: 0%;
+}
+
+.cont-menu-game {
+    display: none;
+}
+
+.cont-menu-game-show {
+    display: flex;
+    position: absolute;
+    top: 19.5%;
+    width: 900px;
+    height: 500px;
+}
+
 .menu-game {
     display: none;
 }
@@ -671,13 +702,13 @@ footer .img-logo {
     justify-content: center;
     align-items: center;
     position: absolute;
+    top: 45%;
+    left: 16%;
     height: 200px;
     width: 600px;
     background-color: rgba(18, 85, 15);
     margin: 0px;
     padding: 0px;
-    top: 38%;
-    left: 13%;
     text-align: center;
     border-radius: 10px;
     border: solid 3px white;
@@ -691,7 +722,11 @@ footer .img-logo {
 
 .menu-game-show p {
     margin: 0%;
-    font-size: 400%;
+    font-size: 200%;
+}
+
+.img-menu-game {
+    width: 100%;
 }
 
 .winner {
@@ -731,32 +766,43 @@ footer .img-logo {
 }
 
 .btn-play-again {
+    width: 25px;
+    height: 25px;
     position: absolute;
-    top: 12%;
-    left: 60%;
+    top: 11%;
+    left: 66%;
     margin-top: 5%;
     background-color: rgb(5, 167, 5);
     color: aliceblue;
+    border-radius: 15px;
 
 }
 
-.btn-5-linea {
+.img-btn-restart {
+    width: 100%;
+    height: 100%;
+}
+
+.btn-option-game {
     width: 150px;
     height: 30px;
     background-color: rgb(5, 167, 5);
     color: aliceblue;
     border: solid 1px white;
+}
+
+.btn-5-linea {
+    margin: 10px;
+
+}
+
+.btn-6-linea {
     margin: 10px;
 
 }
 
 .classic {
     text-align: center;
-    width: 150px;
-    height: 30px;
-    background-color: rgb(5, 167, 5);
-    color: aliceblue;
-    border: solid 1px white;
     margin: 20px;
 
 }

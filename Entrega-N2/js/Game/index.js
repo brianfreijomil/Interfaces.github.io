@@ -5,58 +5,70 @@ let canvas = document.getElementById("Mycanvas");
 let ctx = canvas.getContext('2d');
 
 //botones del juego
-document.getElementById("btn-play-again").addEventListener('click', hiddenWinner);
-document.getElementById("btn-menu").addEventListener('click', showMenu);
+document.getElementById("btn-play-again").addEventListener('click', resetGame);
 
 //imagenes del juego
 let imgFondoCanvas = document.getElementById("fondoCanvas");
 let imgP1 = document.getElementById('player1'); 
 let imgP2 = document.getElementById('player2');
-let imgTurno1 = document.getElementById('turno1');
-let imgTurno2 = document.getElementById('turno2');
+let turnoPlayer = document.getElementById('turnoPlayer');
 let img1 = document.getElementById('messi'); 
 let img2 = document.getElementById('bicho');
 
 //timer
 let timer = document.getElementById("timer");
 
+//arreglo de fichas y arreglo de entradas al tablero
 let shapes = [];
 let entradas = [];
-let shapesUsadas = 0;
 
+//variables juego
 let jugador;
 let jugador1;
 let jugador2;
 let turno = 1;
+var timeri;
+let contador = 60;
 
+//canvas variables
 let imagenFondo;
 let widthCanvas = 900;
 let heigthCanvas = 500;
+let drawLoop;
 
+//valores iniciales
 let cantShapes = 42;
-let cantEntradas = 7;
-let cantPos = 6;
-let condicionWinner = 4;
+let cantLinea = 0;
 
-let btn5linea = document.getElementById("btn-5-linea");
-btn5linea.addEventListener('click', extends5EnLinea);
-let clasic = document.getElementById("classic");
-clasic.addEventListener('click', classic4EnLinea);
-
-//INICIO JUEGO
-function init() {
-    addElementsGame();
-    drawGame(cantShapes);
+//INICIO JUEGO 
+function init(linea, cantEntradas, cantPosiciones) {
+    showTurno();
+    hiddenMenu();
+    cantLinea = linea;
+    addElementsGame(cantEntradas, cantPosiciones);
+    drawGame();
+    clearInterval(timeri);
+    contador = 60;
+    timeri = setInterval(timerRestart,1000);
     initEvents();
 }
 
 // ---------------  AGREGO DE ELEMENTOS  --------------------------------------------//
 
-function addElementsGame() {
+function addElementsGame(cantEntradas, cantPosiciones) {
+    removeElements();
     addPlayers("The GOAT", "El Bicho");
-    addEntradas(entradas, 150, 225, cantEntradas);
-    addTablero(cantPos);
-    addShapes(shapes, 50, 150, jugador, cantShapes);
+    if(cantEntradas == 7) {
+        addEntradas(150, 225, cantEntradas);
+    }
+    else if(cantEntradas == 8){
+        addEntradas(100, 200, cantEntradas);
+    }
+    else {
+        addEntradas(50, 175, cantEntradas);
+    }
+    addTablero(cantPosiciones);
+    addShapes(50, 150);
 }
 
 // AGREGO JUGADOR
@@ -66,7 +78,7 @@ function addPlayers(name1, name2) {
 }
 
 // AGREGO FICHA
-function addShapes(arr, x, y, jugador) {
+function addShapes(x, y) {
     for (let i = 0; i < cantShapes; i++) {
         if(i < 21) {
             jugador = jugador1;
@@ -96,16 +108,16 @@ function addShapes(arr, x, y, jugador) {
         }
         y+=45;
         let shape = new Shape(x,y,ctx,jugador);
-        arr.push(shape);
+        shapes.push(shape);
     }
 }
 
 // AGREGO ENTRADA 
-function addEntradas(arr, y, x) {
+function addEntradas(y, x, cantEntradas) {
     for (let i = 0; i < cantEntradas; i++) {
         x+=50;
         let entrada = new Entrada(x, y, 50, 50, ctx);
-        arr.push(entrada);
+        entradas.push(entrada);
     }
 }
 
@@ -125,14 +137,6 @@ function drawGame() {
     drawImg(imgFondoCanvas,0,0,900,500);
     drawImg(imgP1,60,60,100,100);
     drawImg(imgP2,730,60,100,100);
-    if(turno == 1) {
-        ctx.clearRect(350,40,200,30);
-        drawImg(imgTurno1,350,40,200,30);
-    }
-    else {
-        ctx.clearRect(350,40,200,30);
-        drawImg(imgTurno2,350,40,200,30);
-    }
     entradas.forEach(entrada => {
         entrada.draw();
         entrada.drawPosiciones();
@@ -151,9 +155,32 @@ function drawImg(img,x,y,w,h) {
     ctx.closePath();
 }
 
+//elimina elemntos de js
+function removeElements() {
+    let cantEntradas = entradas.length;
+    for (let i = 0; i < cantShapes; i++) {
+        shapes.pop();  
+    }
+    for (let i = 0; i < cantEntradas; i++) {
+        entradas.pop();
+    }
+    jugador1 = null;
+    jugador2 = null;
+}
+
 // BORRA TODO LO HECHO EN EL CANVAS
 function clearCanvas() {
     ctx.clearRect(0, 0, 900, 600);
+}
+
+//contador de un minuto que al minuto de no jugar resetea el juego
+function timerRestart() {
+    document.getElementById("cont-timer").innerHTML = "Time to restart: " + contador;
+    contador--;
+    if(contador==-1) {
+        clearInterval(timeri);
+        resetGame();
+    }
 }
 
 // INICIO EVENTOS DEL MOUSE
@@ -161,42 +188,6 @@ function initEvents() {
     canvas.onmousedown = mouseDown;
     canvas.onmousemove = mouseMove;
     canvas.onmouseup = mouseUp;
-}
-
-function extends5EnLinea() {
-    hiddenMenu();
-    resetGame();
-    let dimy = 7;
-    condicionWinner = 5;
-    let x = entradas[6].getX() + 50;
-    let y = entradas[6].getY();
-    let newEntrada = new Entrada(x, y, 50, 50, ctx);
-    entradas.push(newEntrada);
-    newEntrada.addPosiciones(dimy);
-    for (let i = 0; i < entradas.length; i++) {
-        entradas[i].addPosicion();
-        entradas[i].moveEntrada(25,50);
-        entradas[i].movePosiciones(25);
-        
-    }
-    newEntrada.draw();
-}
-
-function classic4EnLinea() {
-    hiddenMenu();
-    if(entradas.length == 8) {
-        entradas.pop();
-    }
-    if(condicionWinner == 5) {
-        condicionWinner = 4;
-    }
-    console.log(entradas[0].posiciones.length)
-    if(entradas[0].posiciones.length > 6) {
-        for (let i = 0; i < entradas.length; i++) {
-            entradas[i].removePosicion(); 
-            entradas[i].backPosicionInicial();
-        }
-    }
 }
 
 //resetea juego
@@ -208,33 +199,23 @@ function resetGame() {
         shapes[i].backPosicionInicial();
         shapes[i].setUsada(false);   
     }
-    if(entradas.length == 8) {
-        entradas.pop();
-    }
-    if(condicionWinner == 5) {
-        condicionWinner = 4;
-    }
-    console.log(entradas[0].posiciones.length)
-    if(entradas[0].posiciones.length > 6) {
-        for (let i = 0; i < entradas.length; i++) {
-            entradas[i].removePosicion(); 
-            entradas[i].backPosicionInicial();
-        }
-    }
     turno = 1;
+    clearInterval(timeri);
+    contador = 60;
+    timeri = setInterval(timerRestart,1000);
 }
 
 //muestro menu de opciones
 function showMenu() {
     hiddenWinner();
-    document.getElementById("menu-game").classList.remove("menu-game");
-    document.getElementById("menu-game").classList.add("menu-game-show");
+    document.getElementById("cont-menu-game").classList.remove("cont-menu-game");
+    document.getElementById("cont-menu-game").classList.add("cont-menu-game-show");
 }
 
 //oculto menu de opciones
 function hiddenMenu() {
-    document.getElementById("menu-game").classList.remove("menu-game-show");
-    document.getElementById("menu-game").classList.add("menu-game");
+    document.getElementById("cont-menu-game").classList.remove("cont-menu-game-show");
+    document.getElementById("cont-menu-game").classList.add("cont-menu-game");
 }
 
 
@@ -256,33 +237,14 @@ function hiddenWinner() {
     resetGame();
 }
 
-// TIMER
-let contador = 60;
-const timeri = setInterval(()=>{
-    console.log(contador);
-    contador--;
-    if(contador==-1) {
-        clearInterval(timeri);
+//muestra de quien es el turno
+function showTurno() {
+    if(turno == 1) {
+        turnoPlayer.innerHTML = 'Turno Player 1';
     }
-},1000)
-
-//fichas jugadas
-function shapesJugadas() {
-    let suma = 0;
-    for (let i = 0; i < shapes.length; i++) {
-        if(shapes[i].getUsada()) {
-            suma ++;
-        }
+    else {
+        turnoPlayer.innerHTML = 'Turno Player 2';
     }
-    return suma;
-}
-
-//resetea el juego luego de 3 minutos en inactividad
-function resetLoop() {
-    if(shapesUsadas == shapesJugadas()) {
-        resetGame();
-    }
-    
 }
 
 // MOUSE CLICK
@@ -321,12 +283,12 @@ function mouseDown(event) {
 
 // MOUSE MOVIENDOSE
 function mouseMove(event) {
-    setInterval(drawGame,20);
     let x = event.clientX -15;
     let y = event.clientY - 118;
     for (let i = 0; i < shapes.length; i++) {
         if(shapes[i].isSelected()) {
             shapes[i].move(x,y);
+            drawLoop = setInterval(drawGame,20);
         }
     }
 
@@ -334,6 +296,7 @@ function mouseMove(event) {
 
 // MOUSE SUELTO CLICK
 function mouseUp() {
+    clearInterval(drawLoop);
     for (let i = 0; i < shapes.length; i++) {
         if(!shapes[i].getUsada()) {
             fichaDentroTablero(shapes[i], i);
@@ -342,74 +305,26 @@ function mouseUp() {
     }
 }
 
-//CUANDO INSERTO FICHA EN LA ENTRADA, CAMBIO TURNO
 function fichaDentroTablero(shape, numShape) {
-
-    if(entradas[0].checkShapeOn(shape) && !entradas[0].isColumnaCompleta()) {
-        checkTurnoAddShape(entradas[0], numShape, shape);
-        setTurno();
-        shape.setUsada(true);
-        shapesUsadas++;
-        setTimeout(resetLoop, 180000);
-    }
-    else if(entradas[1].checkShapeOn(shape) && !entradas[1].isColumnaCompleta()) {
-        checkTurnoAddShape(entradas[1], numShape, shape);
-        setTurno();
-        shape.setUsada(true);
-        shapesUsadas++;
-        setTimeout(resetLoop, 180000);
-    }
-    else if(entradas[2].checkShapeOn(shape) && !entradas[2].isColumnaCompleta()) {
-        checkTurnoAddShape(entradas[2], numShape, shape);
-        setTurno();
-        shape.setUsada(true);
-        shapesUsadas++;
-        setTimeout(resetLoop, 180000);
-    }
-    else if(entradas[3].checkShapeOn(shape) && !entradas[3].isColumnaCompleta()) {
-        checkTurnoAddShape(entradas[3], numShape, shape);
-        setTurno();
-        shape.setUsada(true);
-        shapesUsadas++;
-        setTimeout(resetLoop, 180000);
-    }
-    else if(entradas[4].checkShapeOn(shape) && !entradas[4].isColumnaCompleta()) {
-        checkTurnoAddShape(entradas[4], numShape, shape);
-        setTurno();
-        shape.setUsada(true);
-        shapesUsadas++;
-        setTimeout(resetLoop, 180000);
-    }
-    else if(entradas[5].checkShapeOn(shape) && !entradas[5].isColumnaCompleta()) {
-        checkTurnoAddShape(entradas[5], numShape, shape);
-        setTurno();
-        shape.setUsada(true);
-        shapesUsadas++;
-        setTimeout(resetLoop, 180000);
-    }
-    else if(entradas[6].checkShapeOn(shape) && !entradas[6].isColumnaCompleta()) {
-        checkTurnoAddShape(entradas[6], numShape, shape);
-        setTurno();
-        shape.setUsada(true);
-        shapesUsadas++;
-        setTimeout(resetLoop, 180000);
-    }
-    else if(entradas.length > 7) {
-        if(entradas[entradas.length-1].checkShapeOn(shape) && !entradas[entradas.length-1].isColumnaCompleta()) {
-            checkTurnoAddShape(entradas[entradas.length-1], numShape, shape);
+    let entradasVacias = 0;
+    for (let i = 0; i < entradas.length; i++) {
+        if(entradas[i].checkShapeOn(shape) && !entradas[i].isColumnaCompleta()) {
+            checkTurnoAddShape(entradas[i], numShape, shape);
             setTurno();
+            showTurno();
             shape.setUsada(true);
-            shapesUsadas++;
-            setTimeout(resetLoop, 180000);
+            clearInterval(timeri);
+            contador = 60;
+            timeri = setInterval(timerRestart,1000);
+            i = entradas.length;
         }
         else {
-            shape.backPosicionInicial();
+            entradasVacias++;
         }
     }
-    else {
+    if(entradasVacias == entradas.length) {
         shape.backPosicionInicial();
     }
-
 }
 
 // CAMBIO TURNO
@@ -460,15 +375,19 @@ function checkWinner(shape) {
                 let duenioShape = shape.getDuenio();
                 if(checkWinnerHorizontal(i, j, duenioShape)) {
                     showWinner(duenioShape);
+                    clearInterval(timeri);
                 }
                 else if(checkWinnerVertical(i, j, duenioShape)) {
                     showWinner(duenioShape);
+                    clearInterval(timeri);
                 }
                 else if(checkWinnerDiagonal1(i, j, duenioShape)) {
                     showWinner(duenioShape);
+                    clearInterval(timeri);
                 }
                 else if(checkWinnerDiagonal2(i, j, duenioShape)) {
                     showWinner(duenioShape);
+                    clearInterval(timeri);
                 }
                 
             }
@@ -480,21 +399,21 @@ function checkWinner(shape) {
 
 // chequea 4 en linea horizontal
 function checkWinnerHorizontal(numEntrada, numPosicion, duenio) {
-    return sumaHaciaIzq(numEntrada, numPosicion, duenio) + sumaHaciaDer(numEntrada, numPosicion, duenio) == condicionWinner;
+    return sumaHaciaIzq(numEntrada, numPosicion, duenio) + sumaHaciaDer(numEntrada, numPosicion, duenio) >= cantLinea;
 }
 
 //chequea 4 en linea vertical
 function checkWinnerVertical(numEntrada, numPosicion, duenio) {
-    return sumaHaciaArriba(numEntrada, numPosicion, duenio) + sumaHaciaAbj(numEntrada, numPosicion, duenio) == condicionWinner;
+    return sumaHaciaArriba(numEntrada, numPosicion, duenio) + sumaHaciaAbj(numEntrada, numPosicion, duenio) >= cantLinea;
 }
 
 //chequea 4 en linea diagonal 1
 function checkWinnerDiagonal1(numEntrada, numPosicion, duenio) {
-    return sumaDiagonalHaciaArriba1(numEntrada, numPosicion, duenio) + sumaDiagonalHaciaAbj1(numEntrada, numPosicion, duenio) == condicionWinner;
+    return sumaDiagonalHaciaArriba1(numEntrada, numPosicion, duenio) + sumaDiagonalHaciaAbj1(numEntrada, numPosicion, duenio) >= cantLinea;
 }
 //chequea 4 en linea diagonal 2
 function checkWinnerDiagonal2(numEntrada, numPosicion, duenio) {
-    return sumaDiagonalHaciaArriba2(numEntrada, numPosicion, duenio) + sumaDiagonalHaciaAbj2(numEntrada, numPosicion, duenio) == condicionWinner;
+    return sumaDiagonalHaciaArriba2(numEntrada, numPosicion, duenio) + sumaDiagonalHaciaAbj2(numEntrada, numPosicion, duenio) >= cantLinea;
 }
 
 function sumaDiagonalHaciaArriba1(numEntrada, numPosicion, duenio) {
@@ -508,7 +427,7 @@ function sumaDiagonalHaciaArriba1(numEntrada, numPosicion, duenio) {
         if(posicion.getShape() !== null) {
             if(posicion.getShape().getDuenio() == duenio) {
                 suma+=1;
-                if(suma == condicionWinner) {
+                if(suma == cantLinea) {
                     seguido = false;
                 }
             }
@@ -536,7 +455,7 @@ function sumaDiagonalHaciaAbj1(numEntrada, numPosicion, duenio) {
         if(posicion.getShape() !== null) {
             if(posicion.getShape().getDuenio() == duenio) {
                 suma+=1;
-                if(suma == condicionWinner) {
+                if(suma == cantLinea) {
                     seguido = false;
                 }
             }
@@ -564,7 +483,7 @@ function sumaDiagonalHaciaArriba2(numEntrada, numPosicion, duenio) {
         if(posicion.getShape() !== null) {
             if(posicion.getShape().getDuenio() == duenio) {
                 suma+=1;
-                if(suma == condicionWinner) {
+                if(suma == cantLinea) {
                     seguido = false;
                 }
             }
@@ -592,7 +511,7 @@ function sumaDiagonalHaciaAbj2(numEntrada, numPosicion, duenio) {
         if(posicion.getShape() !== null) {
             if(posicion.getShape().getDuenio() == duenio) {
                 suma+=1;
-                if(suma == condicionWinner) {
+                if(suma == cantLinea) {
                     seguido = false;
                 }
             }
@@ -618,7 +537,7 @@ function sumaHaciaArriba(numEntrada, numPosicion, duenio) {
         if(posicion.getShape() !== null) {
             if(posicion.getShape().getDuenio() == duenio) {
                 suma+=1;
-                if(suma == condicionWinner) {
+                if(suma == cantLinea) {
                     seguido = false;
                 }
             }
@@ -643,7 +562,7 @@ function sumaHaciaAbj(numEntrada, numPosicion, duenio) {
         if(posicion.getShape() !== null) {
             if(posicion.getShape().getDuenio() == duenio) {
                 suma+=1;
-                if(suma == condicionWinner) {
+                if(suma == cantLinea) {
                     seguido = false;
                 }
             }
@@ -669,7 +588,7 @@ function sumaHaciaIzq(numEntrada, numPosicion, duenio) {
         if(posicion.getShape() !== null) {
             if(posicion.getShape().getDuenio() == duenio) {
                 suma+=1;
-                if(suma == condicionWinner) {
+                if(suma == cantLinea) {
                     seguido = false;
                 }
             }
@@ -695,7 +614,7 @@ function sumaHaciaDer(numEntrada, numPosicion, duenio) {
         if(posicion.getShape() !== null) {
             if(posicion.getShape().getDuenio() == duenio) {
                 suma+=1;
-                if(suma == condicionWinner) {
+                if(suma == cantLinea) {
                     seguido = false;
                 }
             }
@@ -710,7 +629,3 @@ function sumaHaciaDer(numEntrada, numPosicion, duenio) {
     }
     return suma;
 }
-
-init();
-
-

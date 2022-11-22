@@ -3,8 +3,6 @@
 class Entrada {
 
     constructor(x, y, w, h, ctx) {
-        this.xInicial = x;
-        this.yInicial = y;
         this.w = w;
         this.h = h;
         this.x = x;
@@ -25,29 +23,9 @@ class Entrada {
         return this.posiciones;
     }
 
-    backPosicionInicial() {
-        this.x = this.xInicial;
-        this.y = this.yInicial;
-    }
-
-    removePosicion() {
-        this.posiciones.pop();
+    removePosiciones() {
         for (let i = 0; i < this.posiciones.length; i++) {
-            this.posiciones[i].backPosicionInicial();
-        }
-    }
-
-
-    //mueve entrada
-    moveEntrada(x,y) {
-        this.x = this.x - x;
-        this.y = this.y - y;
-    }
-
-    //muevo posiciones
-    movePosiciones(x) {
-        for (let i = 0; i < this.posiciones.length; i++) {
-            this.posiciones[i].move(x);
+            this.posiciones.pop();
         }
     }
 
@@ -83,9 +61,6 @@ class Entrada {
         ctx.fillStyle = 'red';
         ctx.fillRect(this.x, this.y, this.w, this.h);
         ctx.drawImage(img, this.x+5, this.y+5, this.w-10, this.h-10);
-        ctx.font = '12px fantasy';
-        ctx.fillText('SOLTAR', this.x+9, this.y-5, this.w, this.h);
-
     }
 
     //dibuja posiciones
@@ -98,19 +73,21 @@ class Entrada {
     //agrega posiciones
     addPosiciones(cantPosiciones) {
         let xPosicion = this.x;
-        let yPosicion = this.y + 350;
+        let yPosicion;
+        if(cantPosiciones == 6) {
+            yPosicion = this.y + 350; 
+        }
+        else if(cantPosiciones == 7) {
+            yPosicion = this.y + 400;
+        }
+        else {
+            yPosicion = this.y + 450;
+        }
         for (let i = 0; i < cantPosiciones; i++) {
             yPosicion -= 50;
             let posicion = new PosicionTablero(xPosicion, yPosicion, this.w, this.h, ctx);
             this.posiciones.push(posicion);
         }
-    }
-
-    addPosicion() {
-        let xPosicion = this.x;
-        let yPosicion = this.y;
-        let posicion = new PosicionTablero(xPosicion, yPosicion, this.w, this.h, ctx);
-        this.posiciones.push(posicion);
     }
 
     //recibe nueva ficha y la inserta en la posicion libre de mas abajo

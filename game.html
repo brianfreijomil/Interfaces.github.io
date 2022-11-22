@@ -44,8 +44,6 @@
       <div class="game">
         <canvas class="hide-canvas" id="Mycanvas" width="900" height="500">
           <img id="fondoCanvas" src="./Entrega-N2/assets/img/4-en-linea/game/messivscr7.jpg" alt="">
-          <img class="turno1" id="turno1" src="./Entrega-N2/assets/img/4-en-linea/game/Turno Player 1.png" alt="" srcset="">
-          <img class="turno2" id="turno2" src="./Entrega-N2/assets/img/4-en-linea/game/Turno Player 2.png" alt="" srcset="">
           <img class="img_player" id="player2" src="./Entrega-N2/assets/img/4-en-linea/game/Ellipse 11.png" alt="" srcset="">
           <img class="img_player2" id="player1" src="./Entrega-N2/assets/img/4-en-linea/game/Ellipse 10.png" alt="" srcset="">
           <img class="img_shape" id="bicho" src="./Entrega-N2/assets/img/4-en-linea/game/Ellipse 7.png" alt="" srcset="">
@@ -53,23 +51,36 @@
           <img id="circuloVerde" src="./Entrega-N2/assets/img/4-en-linea/game/circuloVerde.png" alt="" srcset="">
           <img id="circuloBordo" src="./Entrega-N2/assets/img/4-en-linea/game/circuloBordo.png" alt="" srcset="">
         </canvas>
+
+        <div class="turnoPlayer" id="turnoPlayer">
+          <p class="turno-text" id="turno-text">Turno player</p>
+        </div>
         <div class="cont-timer" id="cont-timer">
           <p class="timer" id="timer"></p>
+        </div>
+        <div class="btn-play-again" id="btn-play-again">
+          <img class="img-btn-restart" src="./Entrega-N2/assets/img/4-en-linea/game/restart-icon.png" alt="">
         </div>
         <div class="winner" id="winner">
           <p id="text-winner">You Win!</p>
           <div>
-            <div class="btn-menu" id="btn-menu">Menu</div>
+            <div class="btn-menu" id="btn-menu" onclick="showMenu()">Menu</div>
           </div>
         </div>
-        <div class="menu-game-show" id="menu-game">
-          <p id="text-menu">Choose an option</p>
-          <div>
-            <div class="btn-5-linea" id="btn-5-linea">5 in line</div>
-            <div class="classic" id="classic">Classic</div>
+        <div class="cont-menu-game-show" id="cont-menu-game">
+          <img class="img-menu-game" src="./Entrega-N2/assets/img/4-en-linea/game/maxresdefault.jpg" alt="">
+          <div class="menu-game-show" id="menu-game">
+            <p id="text-menu">Choose an option</p>
+            <div>
+              <div class="btn-5-linea btn-option-game" id="btn-5-linea" onclick="init(5,8,7)">5 in line</div>
+              <div class="classic btn-option-game" id="classic" onclick="init(4,7,6)">Classic</div>
+              <div class="btn-6-linea btn-option-game" id="btn-6-linea" onclick="init(6,9,8)">6 in line</div>
+            </div>
           </div>
         </div>
-        <button class="btn-play-again" id="btn-play-again">Restart game</button>
+        
+        
+
         <div class="pre-game" id="preGame">
           <img src="./Entrega-N2/assets/img/4-en-linea/4 en linea customizado.png" alt="img-juego">
           <button id="btnPlay">PLAY</button>
