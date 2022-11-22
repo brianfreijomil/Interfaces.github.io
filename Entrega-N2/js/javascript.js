@@ -2,10 +2,10 @@
 
 //Banner-----------------------------------------------------------
 let arrBanner = [
-  "./Entrega-N2/assets/img/Flyers/bully-flyer.png",
-  "./Entrega-N2/assets/img/Flyers/age-flyer.png",
-  "./Entrega-N2/assets/img/Flyers/gta-flyer.png",
-  "./Entrega-N2/assets/img/Flyers/crash-flyer.png"
+  "/Entrega-N2/assets/img/Flyers/bully-flyer.png",
+  "/Entrega-N2/assets/img/Flyers/age-flyer.png",
+  "/Entrega-N2/assets/img/Flyers/gta-flyer.png",
+  "/Entrega-N2/assets/img/Flyers/crash-flyer.png"
 ];
 
 window.addEventListener("load", cambiar, false);
