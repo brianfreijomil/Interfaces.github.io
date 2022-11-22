@@ -2,10 +2,10 @@
 
 //Banner-----------------------------------------------------------
 let arrBanner = [
-  "img/Flyers/bully-flyer.png",
-  "img/Flyers/age-flyer.png",
-  "img/Flyers/gta-flyer.png",
-  "img/Flyers/crash-flyer.png"
+  "assets/img/Flyers/bully-flyer.png",
+  "assets/img/Flyers/age-flyer.png",
+  "assets/img/Flyers/gta-flyer.png",
+  "assets/img/Flyers/crash-flyer.png"
 ];
 
 window.addEventListener("load", cambiar, false);
