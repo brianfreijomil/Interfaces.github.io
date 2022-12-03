@@ -7,7 +7,7 @@ body{
     margin: 0;
     overflow-x: hidden;
 
-   background-image: url(assets/img/release/506092.jpg);
+   background-image: url(../assets/img/release/506092.jpg);
 
    height: 100%; 
  
@@ -884,13 +884,17 @@ footer .img-logo {
   margin-left: 84%;
 }
 
+.distint-section {
+  background-color: rgb(0, 0, 0, 0);
+}
+
 /*-------------------------------------SPRITESHEET---------------------------------*/
 
 .montania {
   width: 118px;
   height:450px;
   margin:auto;  
-  background:url(assets/img/release/Capa1.png) repeat-x;
+  background:url(../assets/img/release/Capa1.png) repeat-x;
   animation:walk .59s steps(6) infinite;
   position:relative;
   bottom:-120px;
@@ -903,7 +907,7 @@ footer .img-logo {
 }
 
 #sky {
-  background:url(assets/img/release/pngegg1.png) repeat-X;
+  background:url(../assets/img/release/pngegg1.png) repeat-X;
   animation: movebg 10s linear infinite;
 }
 
@@ -918,7 +922,7 @@ footer .img-logo {
 }
 
 #sea {
-  background:url(assets/img/release/pngegg.png) repeat-x;
+  background:url(../assets/img/release/pngegg.png) repeat-x;
   animation: movebg 8s linear infinite;
 
 }
@@ -968,16 +972,18 @@ footer .img-logo {
 }
 
 .sticky .img-logo {
-  width: 60px;
-  height: 60px;
-  margin-left: 10px;
+  width: 40px;
+  height: 40px;
+  margin-left: 2px;
+  transition: all 3s ease;
 }
 
 .sticky .container-title-logo {
-  margin-left: 10px;
+  margin-left: 3px;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 3s ease;
 }
 
 .sticky .container-title-logo h1 {
@@ -992,6 +998,7 @@ footer .img-logo {
    } 
   100% { 
     top: 0%;
+    margin-left: 0px;
     background-color: rgba(0, 0, 0, 0.7); 
   }
 }
@@ -999,5 +1006,139 @@ footer .img-logo {
 @keyframes textSticky {
   0% { font-size: 24px; } 
   100% { font-size: 20px; }
+}
+
+/*-----------------------------------------------------------------------*/
+
+/* Menu desplegable*/
+#check:checked ~ .menu-desplegable ul li {
+  width: 200px;
+  padding: 14px;
+  color: beige;
+  border: solid 1px rgb(196, 79, 36);
+}
+
+#check:checked ~ .icon-menu .b1 {
+   transform: rotate(140deg);
+   top: 10px;
+}
+#check:checked ~ .icon-menu .b2 {
+   opacity: 0;
+}
+#check:checked ~ .icon-menu .b3 {
+   transform: rotate(-140deg);
+   top: 10px;
+}
+#check:checked ~ .icon-menu {
+  left: 3px;
+}
+
+#check {
+    position: fixed;
+    top: 200px;
+    left: 0;
+    appearance: none;
+}
+
+label {
+   position: fixed;
+   width: 40px;
+   height: 35px;
+   top: 150px;
+   left: 25px;
+   background-color: rgb(40, 10, 10);
+   font-size: 20px;
+   font-family: sans-serif;
+   cursor: pointer;
+   z-index: 100000;
+   border-radius: 10%;
+   transition: all 2s ease;
+}
+
+.label-change {
+  top: 71px;
+  left: 4px;
+  background-color: rgb(222, 206, 206);
+}
+
+.barra-menu{
+   position: absolute;
+   width: 30px;
+   height: 5px;
+   background-color: rgb(240, 234, 234);
+   margin: 5px;
+   border-radius: 10px;
+   transition: all 1.5s ease;
+}
+
+.barra-change {
+  background-color: rgb(52, 49, 49);
+}
+
+.b1 {
+   top: 0px;
+}
+.b2 {
+   top: 10px;
+}
+.b3 {
+   top: 20px;
+}
+
+
+.menu-desplegable {
+   position: fixed;
+   top: 190px;
+   left: -0.5%;
+   z-index: 100000;
+}
+
+.menu-desp-change {
+  top: 110px;
+}
+
+.menu-desplegable ul {
+   padding: 0px;
+   margin: 0px;
+}
+
+.menu-desplegable .li {
+   width: 0px;
+   padding: 14px 0px 14px 0px;
+   display: block;
+   list-style: none;
+   cursor: pointer;
+   color: rgb(245, 245, 220, 0);
+   font-family: sans-serif;
+   transition: all 0.5s ease;
+   background-color: rgb(233, 101, 55, 0.8);
+   border: solid 1px rgb(233, 101, 55);
+   overflow: hidden;
+}
+.menu-desplegable li:hover {
+   transition: 1s;
+   background-color: rgb(106, 104, 104, 0.6);
+}
+
+.menu-desplegable .li2 {
+   transition-delay: 0.3s;
+}
+.menu-desplegable .li3 {
+   transition-delay: 0.6s;
+}
+.menu-desplegable .li4 {
+   transition-delay: 0.9s;
+}
+.menu-desplegable .li5 {
+   transition-delay: 1.2s;
+}
+.menu-desplegable .li6 {
+   transition-delay: 1.5s;
+}
+.menu-desplegable .li7 {
+   transition-delay: 1.8s;
+}
+.menu-desplegable .li8 {
+   transition-delay: 2.1s;
 }
 

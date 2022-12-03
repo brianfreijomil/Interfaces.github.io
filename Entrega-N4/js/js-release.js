@@ -13,12 +13,26 @@ function headerSticky() {
 
     var scroll = window.scrollY;
     if (scroll >= 85) {
+      //header
         document.getElementById('header').classList.add('sticky');
         document.getElementById('header').classList.remove('container-logo');
+        //menu
+        document.getElementById('label').classList.add('label-change');
+        document.getElementById('barraM').classList.add('barra-change');
+        document.getElementById('barraM2').classList.add('barra-change');
+        document.getElementById('barraM3').classList.add('barra-change');
+        document.getElementById('menuD').classList.add('menu-desp-change');
     } else if (scroll < 85) {
+      //header
         document.getElementById('header').classList.add('container-logo');
         document.getElementById('header').classList.add('cont-logo-extra');
         document.getElementById('header').classList.remove('sticky');
+        //menu
+        document.getElementById('label').classList.remove('label-change');
+        document.getElementById('barraM').classList.remove('barra-change');
+        document.getElementById('barraM2').classList.remove('barra-change');
+        document.getElementById('barraM3').classList.remove('barra-change');
+        document.getElementById('menuD').classList.remove('menu-desp-change');
     }
 
 }
