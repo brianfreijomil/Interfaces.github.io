@@ -1,12 +1,14 @@
 "Use strict";
 
-const boxes = document.querySelectorAll('.box')
+const boxes = document.querySelectorAll('.box');
+let habAnimada = document.querySelectorAll('.hab-animada');
 
 window.addEventListener('scroll', initAnimations);
 
 function initAnimations() {
   headerSticky();
   checkBoxes();
+  habilidadesAnimadas();
 }
 
 function headerSticky() {
@@ -52,6 +54,31 @@ function checkBoxes(){
       box.classList.remove('show');
     }
   });
+}
+
+function habilidadesAnimadas() {
+  let scrollTop = document.documentElement.scrollTop;
+  for(var i = 0; i<habAnimada.length; i++){
+    let alturaHab = habAnimada[i].offsetTop;
+    if(alturaHab - 580 < scrollTop) {
+      habAnimada[i].style.opacity = 1;
+      if(i == 0) {
+        habAnimada[i].classList.add("hab1");
+      }
+      if(i == 1) {
+        habAnimada[i].classList.add("hab2");
+      }
+      if(i == 2) {
+        habAnimada[i].classList.add("hab3");
+      }
+      if(i == 3) {
+        habAnimada[i].classList.add("hab4");
+      }
+    }
+    else {
+      habAnimada[i].style.opacity = 0;
+    }
+  }
 }
 
 const prevRelease = document.querySelector(".p-release");
