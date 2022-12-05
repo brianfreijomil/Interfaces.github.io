@@ -919,8 +919,8 @@ footer .img-logo {
 }
 
 #sky {
-  background:url(../assets/img/release/pngegg1.png) repeat-X;
-  animation: movebg 10s linear infinite;
+  background:url(../assets/img/release/pngegg1.png) repeat-x;
+  animation: movebg 10000s linear infinite;
 }
 
 #sky p{
@@ -935,13 +935,13 @@ footer .img-logo {
 
 #mountain {
   background:url(../assets/img/release/montanias-sptrite.png) repeat-x;
-  animation: movebg 8s linear infinite;
+  animation: movebg 2500s linear infinite;
 
 }
 
 @keyframes movebg {
-  0% { background-position:0px } 
-  100% { background-position:-850px}
+  0% { background-position:200000px } 
+  100% { background-position:-200000px}
 }
 
 @keyframes gbwalk {
