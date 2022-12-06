@@ -5,6 +5,17 @@ let habAnimada = document.querySelectorAll('.hab-animada');
 
 window.addEventListener('scroll', initAnimations);
 
+window.addEventListener('scroll', function(){
+  let distinct = document.getElementById('distinta');
+  distinct.style.display = "none"
+  if(window.scrollY>=1400 && window.scrollY<2000){
+    distinct.style.display = "block"
+  }
+  else{
+    distinct.style.display = "none"
+  }
+})
+
 function initAnimations() {
   headerSticky();
   checkBoxes();

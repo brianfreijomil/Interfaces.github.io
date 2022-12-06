@@ -815,13 +815,17 @@ footer .img-logo {
 }
 
 .about-game{
-  padding: 40px;
   display: flex;
+  gap: 35%;
+  width: 100%;
+  font-family: fantasy;
   flex-direction: row;
   text-align:justify;
 }
 
 .about-game img{
+  position: fixed;
+  top: 25%;
   width: 500px;
   height: 500px;
   border-radius: 5%;

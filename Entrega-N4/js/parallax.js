@@ -22,7 +22,7 @@ window.addEventListener('scroll', function(){
     if(value >= triggerBottom){
         //text3.style.top = value * 0.1 + 'px';
         //bg2.style.top = value * 1 + 'px';
-        boone.style.top = -value * 0.65 + 'px'; 
-        ede.style.top = -value * 0.69 + 'px'; 
+        boone.style.top = -value * 0.80 + 'px'; 
+        ede.style.top = -value * 0.85 + 'px'; 
     }
 })
