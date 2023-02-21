@@ -35,13 +35,12 @@ let imagenFondo;
 let widthCanvas = 900;
 let heigthCanvas = 500;
 let drawLoop;
-
-//valores iniciales
-let cantShapes = 42;
-let cantLinea = 0;
+let cantShapes;
+let cantLinea;
 
 //INICIO JUEGO 
 function init(linea, cantEntradas, cantPosiciones) {
+    cantShapes = 42;
     showTurno();
     hiddenMenu();
     cantLinea = linea;
@@ -53,7 +52,7 @@ function init(linea, cantEntradas, cantPosiciones) {
     initEvents();
 }
 
-// ---------------  AGREGO DE ELEMENTOS  --------------------------------------------//
+// ---------------  ALTA DE ELEMENTOS  --------------------------------------------//
 
 function addElementsGame(cantEntradas, cantPosiciones) {
     removeElements();
@@ -131,7 +130,7 @@ function addTablero(cantPosiciones) {
 
 // ---------------  DIBUJO ELEMENTOS  --------------------------------------------//
 
-// DIBUJO ELEMENTOS DEL JUEGO (entradas, tablero, fichas)
+// DIBUJO ELEMENTOS DEL JUEGO
 function drawGame() {
     clearCanvas();
     drawImg(imgFondoCanvas,0,0,900,500);
@@ -168,7 +167,7 @@ function removeElements() {
     jugador2 = null;
 }
 
-// BORRA TODO LO HECHO EN EL CANVAS
+// LIMPIA CANVAS
 function clearCanvas() {
     ctx.clearRect(0, 0, 900, 600);
 }

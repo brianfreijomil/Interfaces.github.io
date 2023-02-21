@@ -96,6 +96,7 @@ header {
     color: black;
     font-weight: bold;
     font-size: small;
+    cursor: pointer;
 }
 
 .profile .profile-menu {
@@ -625,6 +626,10 @@ footer .img-logo {
 .breadcrum ul li {
     list-style-type: none;
     margin-right: 5px;
+    cursor: pointer;
+}
+.breadcrum ul li:hover {
+    text-decoration: underline;
 }
 
 .breadcrum ul li a{
@@ -763,6 +768,7 @@ footer .img-logo {
     color: aliceblue;
     border: solid 1px white;
     margin: 10px;
+    cursor: pointer;
 }
 
 .btn-play-again {
@@ -775,6 +781,7 @@ footer .img-logo {
     background-color: rgb(5, 167, 5);
     color: aliceblue;
     border-radius: 15px;
+    cursor: pointer;
 
 }
 
@@ -791,19 +798,16 @@ footer .img-logo {
     border: solid 1px white;
 }
 
-.btn-5-linea {
+.btn-5-linea, .btn-6-linea {
     margin: 10px;
-
-}
-
-.btn-6-linea {
-    margin: 10px;
+    cursor: pointer;
 
 }
 
 .classic {
     text-align: center;
     margin: 20px;
+    cursor: pointer;
 
 }
 
@@ -832,6 +836,7 @@ footer .img-logo {
     background-color: #000000;
     color: #d6a700;
     transition: all 500ms ease;
+    cursor: pointer;
 }
 .pre-game button:hover {
     top: 43%;
@@ -948,6 +953,7 @@ footer .img-logo {
 }
 .button-share:hover {
     background-color: #a86df6;
+    cursor: pointer;
 }
 
 .share-game .button-share div{
@@ -1020,6 +1026,7 @@ footer .img-logo {
     width: 120px;
     height: 70px;
     margin: 0px 165px 100px 0px;
+    cursor: pointer;
 }
 
 .hide-img-big1,.hide-img-big2,.hide-img-big3,.hide-img-big4,.hide-img-big5,
@@ -1033,6 +1040,7 @@ footer .img-logo {
     z-index: 100;
     top: 5%;
     left: 10%;
+    cursor: pointer;
 }
 
 .hide-sombra-img-big {
@@ -1137,5 +1145,6 @@ padding-right: 10px;
     margin-left: 30%;
 }
 .more-comments:hover {
-    background-color: rgb(163, 107, 195)
+    background-color: rgb(163, 107, 195);
+    cursor: pointer;
 }
