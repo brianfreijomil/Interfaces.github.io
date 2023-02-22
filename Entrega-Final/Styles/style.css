@@ -49,14 +49,18 @@ header {
 }
 
 .img-logo {
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
 }
 
 .container-title-logo {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.container-title-logo h1 {
+    font-size: 22px;
 }
 
 /*Style social networks header*/
