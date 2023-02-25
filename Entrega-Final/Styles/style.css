@@ -244,6 +244,10 @@ nav ul li a {
   .menu[data-animation] a:hover span:last-child {
     transform: none;
   }
+  .img-nav{
+    width: 35px;
+    height: 25px;
+  }
 
   /* ANIMATIONS
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
