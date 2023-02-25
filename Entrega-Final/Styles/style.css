@@ -195,6 +195,66 @@ nav ul li a {
     color: #EDC710;
 }
 
+.menu-categorias{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .menu-categorias li {
+    margin-right: 55px;
+  }
+  
+  .menu-categorias a {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  
+  .menu-categorias a span {
+    transition: transform 0.2s ease-out;
+  }
+  
+  .menu-categorias a span:first-child {
+    display: inline-block;
+    text-align: center;
+    padding: 8px;
+  }
+  
+  .menu-categorias a span:last-child {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-100%);
+  }
+  
+  .menu-categorias i {
+    font-size: 30px;
+  }
+  
+  .menu-categorias a:hover span:first-child {
+    transform: translateY(100%);
+  }
+  
+  .menu-categorias a:hover span:last-child,
+  .menu[data-animation] a:hover span:last-child {
+    transform: none;
+  }
+
+  /* ANIMATIONS
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.menu[data-animation="to-top"] a span:last-child {
+    transform: translateY(100%);
+  }
+  
+  .menu[data-animation="to-top"] a:hover span:first-child {
+    transform: translateY(-100%);
+  }
+
 /*Style Banner Home*/
 .container-banner-home {
     display: flex;
