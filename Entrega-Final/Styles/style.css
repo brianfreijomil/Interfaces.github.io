@@ -51,6 +51,7 @@ header {
 .img-logo {
     width: 55px;
     height: 55px;
+    transition: all 0.5s;
 }
 
 .container-title-logo {
@@ -61,7 +62,17 @@ header {
 
 .container-title-logo h1 {
     font-size: 22px;
+    transition: all 0.5s;
 }
+
+.container-logo:hover .img-logo{
+    width: 60px;
+    height: 60px;
+}
+.container-logo:hover .container-title-logo h1{
+    font-size: 24px;
+}
+
 
 /*Style social networks header*/
 .container-social-networks {
