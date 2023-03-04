@@ -1184,6 +1184,8 @@ padding-right: 10px;
 
 /* pagina community*/
 
+/*banner*/
+
 .c-h2 {
     font-family: inherit;
     font-size: 2vw;
@@ -1233,6 +1235,8 @@ padding-right: 10px;
     left: 41%;
     color: #d197f3;
 }
+
+/* noticias cuadro */
 
 .c-text-news-site {
     text-align: center;
@@ -1328,6 +1332,8 @@ padding-right: 10px;
     left: 16%;
 }
 
+/* juegos gratis*/
+
 .c-cont-new-freeGames {
     font-size: 1.5vw;
     line-height: 24px;
@@ -1390,7 +1396,7 @@ padding-right: 10px;
     left:28%
 }
 
-
+/*articulos*/
 
 .c-articles-entertainment {
     font-family: Segoe UI,SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -1398,26 +1404,58 @@ padding-right: 10px;
 }
 
 .c-article {
-    background-image: url(/Entrega-Final/assets/img/community/backAt.png);
-    background-size: cover;
     width: 100%;
     height: 330px;
     margin-bottom: 1%;
 }
 
-.c-artc1 {
-    display: flex;
-    justify-content: space-around;
+.c-img-new {
+    width: 35%;
+    height: 250px;
+}
+
+.c-article .c-text-article {
+    width: 50%;
     align-items: center;
 }
 
-.c-artc1 p {
-    width: 45%;
+.c-text-article h2 {
+    margin: 0% 0% 2% 0%;
+    font-size: 1.4vw;
 }
 
-.c-img-new {
-    background-image: url(/Entrega-Final/assets/img/community/5EEKMI3MZZEAJL3NH2XCKWF77E.png);
+.c-text-article p {
+    font-size: 2.7vw;
+    font-weight: lighter;
+}
+
+.c-article {
+    margin: 0%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+} 
+
+/*articulo 1*/
+
+.c-artc1 {
+    background-image: url(/Entrega-Final/assets/img/community/backAt.png);
     background-size: cover;
-    width: 40%;
-    height: 250px;
+}
+
+.c-img-new1 {
+    background-image: url(/Entrega-Final/assets/img/community/hallan-plagio-super-mario-bros.jpg);
+    background-size: cover;
+}
+
+/*articulo 2*/
+
+.c-artc2 {
+    background-image: url(/Entrega-Final/assets/img/community/fondddd.png);
+    background-size: cover;
+}
+
+.c-img-new2 {
+    background-image: url(/Entrega-Final/assets/img/community/god.png);
+    background-size: cover;
 }
