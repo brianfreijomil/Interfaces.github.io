@@ -1,7 +1,8 @@
 
 body { 
     margin: 0px;
-    background-color: #1D0D50;
+    /*background-color: #1D0D50; el original */
+    background-color: #060215;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: aliceblue;
 }
@@ -51,6 +52,7 @@ header {
 .img-logo {
     width: 55px;
     height: 55px;
+    transition: all 0.5s;
 }
 
 .container-title-logo {
@@ -61,7 +63,17 @@ header {
 
 .container-title-logo h1 {
     font-size: 22px;
+    transition: all 0.5s;
 }
+
+.container-logo:hover .img-logo{
+    width: 60px;
+    height: 60px;
+}
+.container-logo:hover .container-title-logo h1{
+    font-size: 24px;
+}
+
 
 /*Style social networks header*/
 .container-social-networks {
@@ -1162,4 +1174,286 @@ padding-right: 10px;
 .more-comments:hover {
     background-color: rgb(163, 107, 195);
     cursor: pointer;
+}
+
+
+
+
+
+/* pagina community*/
+
+/*banner*/
+
+.c-h2 {
+    font-family: inherit;
+    font-size: 2vw;
+}
+
+.c-banner-inicio {
+    position: relative;
+    margin-left: auto;
+    height: 100%;
+}
+
+.c-img-banner {
+    max-width: 100%;
+}
+
+.c-title-banner {
+    position: absolute;
+    z-index: 1;
+    top: 55%;
+    left: 31.7%;
+    font-family: inherit;
+    font-size: 3.7vw;
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 3px black, 0 0 1em black, 0 0 0.2em black;
+}
+.c-title-banner::first-letter {
+    color: #4c3b82;
+}
+
+.c-subbtitle-banner {
+    position: absolute;
+    z-index: 1;
+    top: 73%;
+    left: 40%;
+    font-family: inherit;
+    font-size: 1vw;
+    margin: 0%;
+    color: #d29df0;
+}
+.sub2 {
+    top: 77%;
+    left: 44.3%;
+    color: #d197f3;
+}
+.sub3 {
+    top: 81%;
+    left: 41%;
+    color: #d197f3;
+}
+
+/* noticias cuadro */
+
+.c-text-news-site {
+    text-align: center;
+    margin-top: 5%;
+}
+.c-text-news-site p {
+    font-size: 1.2vw;
+}
+.c-text-news-site a:hover {
+    text-decoration-line: underline;
+}
+
+.c-news-site {
+    font-family: Segoe UI,SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    width: 84%;
+    height: 580px;
+    margin: 3% 8% 8% 8%;
+    display: grid;
+    grid-template-areas:
+    "m m n o"
+    "m m p p"
+    ;
+}
+.c-box-comm p{
+    font-size: 1.5vw;
+    line-height: 24px;
+    font-weight: normal;
+    margin: 10px;
+}
+
+
+.c-box-comm .c-link-new {
+    font-size: 1.4vw;
+    line-height: 24px;
+    font-weight: bold;
+}
+.c-box-comm .c-link-new:hover {
+    text-decoration-line: underline;
+}
+
+
+.c-box1{
+    grid-area: m;
+    position: relative;
+    background-image: url(/Entrega-Final/assets/img/community/new2.png);
+    background-size: cover;
+}
+.c-box1 div {
+    position: absolute;
+    top: 40%;
+    left: 25%;
+}
+
+.c-box2{
+    grid-area: n;
+    position: relative;
+    background-image: url(/Entrega-Final/assets/img/community/new3.png);
+    background-size: cover;
+}
+.c-box2 div {
+    position: absolute;
+    top: 40%;
+    left: 11.5%;
+}
+.c-box2 p {
+    text-align: center;
+}
+
+.c-box3{
+    grid-area: o;
+    position: relative;
+    background-image: url(/Entrega-Final/assets/img/community/new4.png);
+    background-size: cover;
+}
+.c-box3 div {
+    position: absolute;
+    top: 40%;
+    left: 11.6%;
+}
+.c-box3 p {
+    text-align: center;
+}
+
+.c-box4{
+    position: relative;
+    grid-area: p;
+    background-image: url(/Entrega-Final/assets/img/community/new1.png);
+    background-size: cover;
+}
+.c-box4 div {
+    position: absolute;
+    top: 45%;
+    left: 16%;
+}
+
+/* juegos gratis*/
+
+.c-cont-new-freeGames {
+    font-size: 1.5vw;
+    line-height: 24px;
+    font-weight: normal;
+    margin: 10px;
+}
+.c-cont-new-freeGames div a {
+    font-size: 1.4vw;
+    line-height: 24px;
+    font-weight: bold;
+    color: #a86df6;
+}
+.c-cont-new-freeGames div a:hover {
+    text-decoration: underline;
+}
+
+.c-new-free-games {
+    display: flex;
+    justify-content: space-between;
+    font-family: Segoe UI,SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    width: 84%;
+    margin: 3% 8% 8% 8%;
+}
+
+.c-new-free-games div {
+    width: 30%;
+    height: 230px;
+}
+
+.c-freeGame1 {
+    position: relative;
+    background-image: url(/Entrega-Final/assets/img/community/imgFreeGame.png);
+    background-size: cover;
+}
+.c-freeGame1 a {
+    position: absolute;
+    top: 95%;
+    left:20%
+}
+
+.c-freeGame2 {
+    position: relative;
+    background-image: url(/Entrega-Final/assets/img/community/imgFreeGame2.jpg);
+    background-size: cover;
+}
+.c-freeGame2 a {
+    position: absolute;
+    top: 95%;
+    left:40%
+}
+
+.c-freeGame3 {
+    position: relative;
+    background-image: url(/Entrega-Final/assets/img/community/mmmm.png);
+    background-size: cover;
+}
+.c-freeGame3 a {
+    position: absolute;
+    top: 95%;
+    left:28%
+}
+
+/*articulos*/
+
+.c-articles-entertainment {
+    font-family: Segoe UI,SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    margin: 17% 0% 8% 0%;
+}
+
+.c-article {
+    width: 100%;
+    height: 330px;
+    margin-bottom: 1%;
+}
+
+.c-img-new {
+    width: 35%;
+    height: 250px;
+}
+
+.c-article .c-text-article {
+    width: 50%;
+    align-items: center;
+}
+
+.c-text-article h2 {
+    margin: 0% 0% 2% 0%;
+    font-size: 1.4vw;
+}
+
+.c-text-article p {
+    font-size: 2.7vw;
+    font-weight: lighter;
+}
+
+.c-article {
+    margin: 0%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+} 
+
+/*articulo 1*/
+
+.c-artc1 {
+    background-image: url(/Entrega-Final/assets/img/community/backAt.png);
+    background-size: cover;
+}
+
+.c-img-new1 {
+    background-image: url(/Entrega-Final/assets/img/community/hallan-plagio-super-mario-bros.jpg);
+    background-size: cover;
+}
+
+/*articulo 2*/
+
+.c-artc2 {
+    background-image: url(/Entrega-Final/assets/img/community/fondddd.png);
+    background-size: cover;
+}
+
+.c-img-new2 {
+    background-image: url(/Entrega-Final/assets/img/community/god.png);
+    background-size: cover;
 }
