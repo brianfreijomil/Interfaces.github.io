@@ -365,9 +365,27 @@ nav ul li a {
     transition: all 0.5s;
 }
 
+.play-game {
+    position: absolute;
+    opacity: 0;
+    top: 30%;
+    left: 27%;
+    z-index: 12;
+}
+
+.play-game h4 {
+    margin: 0%;
+}
+
+
 .card:hover {transform:scale(1); transition: 0.5s; cursor:pointer; z-index: 1111;}
 .card-container:hover {transform:scale(1.1); transition: 0.5s; cursor:pointer;z-index: 1111;}
 .card img:hover {filter:brightness(20%);}
+
+.card-container:hover .play-game {
+    z-index: 1112;
+    opacity: 1;
+}
 
 .card {
     position: relative;
