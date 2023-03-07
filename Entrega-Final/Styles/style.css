@@ -1279,7 +1279,7 @@ padding-right: 10px;
 .c-box1{
     grid-area: m;
     position: relative;
-    background-image: url(/Entrega-Final/assets/img/community/new2.png);
+    background-image: url(/Interfaces.github.io/Entrega-Final/assets/img/community/new2.png);
     background-size: cover;
     opacity: 0;
 }
@@ -1306,7 +1306,7 @@ padding-right: 10px;
 .c-box2{
     grid-area: n;
     position: relative;
-    background-image: url(/Entrega-Final/assets/img/community/new3.png);
+    background-image: url(/Interfaces.github.io/Entrega-Final/assets/img/community/new3.png);
     background-size: cover;
     opacity: 0;
 }
@@ -1336,7 +1336,7 @@ padding-right: 10px;
 .c-box3{
     grid-area: o;
     position: relative;
-    background-image: url(/Entrega-Final/assets/img/community/new4.png);
+    background-image: url(/Interfaces.github.io/Entrega-Final/assets/img/community/new4.png);
     background-size: cover;
     opacity: 0;
 }
@@ -1428,7 +1428,7 @@ padding-right: 10px;
 
 .c-freeGame1 {
     position: relative;
-    background-image: url(/Entrega-Final/assets/img/community/imgFreeGame.png);
+    background-image: url(/Interfaces.github.io/Entrega-Final/assets/img/community/imgFreeGame.png);
     background-size: cover;
 }
 .c-freeGame1 a {
@@ -1439,7 +1439,7 @@ padding-right: 10px;
 
 .c-freeGame2 {
     position: relative;
-    background-image: url(/Entrega-Final/assets/img/community/imgFreeGame2.jpg);
+    background-image: url(/Interfaces.github.io/Entrega-Final/assets/img/community/imgFreeGame2.jpg);
     background-size: cover;
 }
 .c-freeGame2 a {
@@ -1450,7 +1450,7 @@ padding-right: 10px;
 
 .c-freeGame3 {
     position: relative;
-    background-image: url(/Entrega-Final/assets/img/community/mmmm.png);
+    background-image: url(/Interfaces.github.io/Entrega-Final/assets/img/community/mmmm.png);
     background-size: cover;
 }
 .c-freeGame3 a {
@@ -1514,7 +1514,7 @@ padding-right: 10px;
 /*articulo 1*/
 
 .c-artc1 {
-    background-image: url(/Entrega-Final/assets/img/community/backAt.png);
+    background-image: url(/Interfaces.github.io/Entrega-Final/assets/img/community/backAt.png);
     background-size: cover;
 }
 
@@ -1523,7 +1523,7 @@ padding-right: 10px;
 }
 
 .c-img-new1 {
-    background-image: url(/Entrega-Final/assets/img/community/hallan-plagio-super-mario-bros.jpg);
+    background-image: url(/Interfaces.github.io/Entrega-Final/assets/img/community/hallan-plagio-super-mario-bros.jpg);
     background-size: cover;
 }
 
@@ -1542,7 +1542,7 @@ padding-right: 10px;
 /*articulo 2*/
 
 .c-artc2 {
-    background-image: url(/Entrega-Final/assets/img/community/fondddd.png);
+    background-image: url(/Interfaces.github.io/Entrega-Final/assets/img/community/fondddd.png);
     background-size: cover;
 }
 .articAnim2 {
@@ -1550,7 +1550,7 @@ padding-right: 10px;
 }
 
 .c-img-new2 {
-    background-image: url(/Entrega-Final/assets/img/community/god.png);
+    background-image: url(/Interfaces.github.io/Entrega-Final/assets/img/community/god.png);
     background-size: cover;
 }
 
@@ -1576,7 +1576,7 @@ padding-right: 10px;
     font-family: Segoe UI,SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
     width: 100%;
     margin: 15% 0% 8% 0%;
-    background-image: url(/Entrega-Final/assets/img/community/fondoTorneos.png);
+    background-image: url(/Interfaces.github.io/Entrega-Final/assets/img/community/fondoTorneos.png);
     background-size: cover;
 }
 
@@ -1635,21 +1635,21 @@ padding-right: 10px;
 }
 
 .c-imgTour1 {
-    background-image: url(/Entrega-Final/assets/img/community/retrostar.jpg);
+    background-image: url(/Interfaces.github.io/Entrega-Final/assets/img/community/retrostar.jpg);
     background-size: cover;
     filter: brightness(145%);
     border: solid 1px white;
 }
 
 .c-imgTour2 {
-    background-image: url(/Entrega-Final/assets/img/community/torneoR.png);
+    background-image: url(/Interfaces.github.io/Entrega-Final/assets/img/community/torneoR.png);
     background-size: cover;
     /*filter: brightness(145%);*/
     border: solid 1px white;
 }
 
 .c-imgTour3 {
-    background-image: url(/Entrega-Final/assets/img/community/torneo3.png);
+    background-image: url(/Interfaces.github.io/Entrega-Final/assets/img/community/torneo3.png);
     background-size: cover;
     /*filter: brightness(145%);*/
     border: solid 1px white;
@@ -1686,22 +1686,22 @@ padding-right: 10px;
 }
 
 .c-rds .c-rs1 {
-    background-image: url(/Entrega-Final/assets/img/community/twitterC\ 1.png);
+    background-image: url(/Interfaces.github.io/Entrega-Final/assets/img/community/twitterC\ 1.png);
     background-size: cover;
 }
 
 .c-rds .c-rs2 {
-    background-image: url(/Entrega-Final/assets/img/community/facebookC\ 1.png);
+    background-image: url(/Interfaces.github.io/Entrega-Final/assets/img/community/facebookC\ 1.png);
     background-size: cover;
 }
 
 .c-rds .c-rs3 {
-    background-image: url(/Entrega-Final/assets/img/community/instagramC\ 1.png);
+    background-image: url(/Interfaces.github.io/Entrega-Final/assets/img/community/instagramC\ 1.png);
     background-size: cover;
 }
 
 .c-rds .c-rs4 {
-    background-image: url(/Entrega-Final/assets/img/community/youtubeC\ 1.png);
+    background-image: url(/Interfaces.github.io/Entrega-Final/assets/img/community/youtubeC\ 1.png);
     background-size: cover;
 }
 
