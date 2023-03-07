@@ -383,8 +383,8 @@ nav ul li a {
 }
 
 
-.card:hover {transform:scale(1); transition: 0.5s; cursor:pointer; z-index: 1111;}
-.card-container:hover {transform:scale(1.1); transition: 0.5s; cursor:pointer;z-index: 1111;}
+.card:hover {transform:scale(1); transition: 0.5s; cursor:pointer; z-index: 11;}
+.card-container:hover {transform:scale(1.1); transition: 0.5s; cursor:pointer;z-index: 11;}
 .card img:hover {filter:brightness(20%);}
 
 .card-container:hover .play-game {
