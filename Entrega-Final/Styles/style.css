@@ -1409,24 +1409,36 @@ padding-right: 10px;
     margin-bottom: 1%;
 }
 
-.c-img-new {
+.c-artic-a {
     width: 35%;
     height: 250px;
+}
+.c-img-new {
+    width: 100%;
+    height: 250px;
+    transition: all 1s;
 }
 
 .c-article .c-text-article {
     width: 50%;
-    align-items: center;
 }
 
 .c-text-article h2 {
     margin: 0% 0% 2% 0%;
     font-size: 1.4vw;
+    text-align: left;
+}
+.c-text-article h2:hover {
+    text-decoration: underline;
 }
 
 .c-text-article p {
     font-size: 2.7vw;
     font-weight: lighter;
+    text-align: left;
+}
+.c-text-article p:hover {
+    text-decoration: underline;
 }
 
 .c-article {
@@ -1459,3 +1471,145 @@ padding-right: 10px;
     background-image: url(/Entrega-Final/assets/img/community/god.png);
     background-size: cover;
 }
+
+.c-artic-a:hover .c-img-new{
+    filter: brightness(150%);
+}
+
+/* articulos torneos*/
+
+.c-cont-articles-tournament {
+    font-family: Segoe UI,SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    width: 100%;
+    margin: 15% 0% 8% 0%;
+    background-image: url(/Entrega-Final/assets/img/community/fondoTorneos.png);
+    background-size: cover;
+}
+
+.space {
+    height: 50px;
+}
+
+.c-cont-articles-tournament .c-text-news-site p {
+    font-size: 1.5vw;
+}
+
+.c-article-tournament {
+    width: 84%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10% 8% 0% 8%;
+    background-color: #050210ca;
+    height: 300px;
+}
+
+.c-text-tournament {
+    width: 50%;
+    align-items: center;
+}
+
+.c-text-tournament a h2 {
+    text-align: left;
+    color: #874aaa;
+}
+.c-text-tournament a h2:hover {
+    text-decoration: underline;
+}
+.c-text-tournament a p {
+    text-align: left;
+    font-size: 1.3vw;
+}
+.c-text-tournament a p:hover {
+    text-decoration: underline;
+}
+
+.textTournament2 a h2 {
+    text-align: right;
+}
+.textTournament2 a p {
+    text-align: right;
+}
+
+.c-cont-imgTournament {
+    width: 42%;
+    height: 250px;
+}
+.c-img-tournament{
+    width: 100%;
+    height: 100%;
+}
+
+.c-imgTour1 {
+    background-image: url(/Entrega-Final/assets/img/community/retrostar.jpg);
+    background-size: cover;
+    filter: brightness(145%);
+    border: solid 1px white;
+}
+
+.c-imgTour2 {
+    background-image: url(/Entrega-Final/assets/img/community/torneoR.png);
+    background-size: cover;
+    /*filter: brightness(145%);*/
+    border: solid 1px white;
+}
+
+.c-imgTour3 {
+    background-image: url(/Entrega-Final/assets/img/community/torneo3.png);
+    background-size: cover;
+    /*filter: brightness(145%);*/
+    border: solid 1px white;
+}
+
+.c-redesSociales {
+    width: 84%;
+    margin: 18% 6% 0% 6%;
+    height: 400px;
+}
+
+.c-redesSociales div h2 {
+    width: 100%;
+    text-align: center;
+}
+
+.c-redesSociales .c-rds {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 150px;
+}
+
+.c-cont-rs {
+    width: 6%;
+    height: 45%;
+    margin: 5% 2% 0% 8%;
+}
+
+.c-rs {
+    width: 100%;
+    height: 100%;
+}
+
+.c-rds .c-rs1 {
+    background-image: url(/Entrega-Final/assets/img/community/twitterC\ 1.png);
+    background-size: cover;
+}
+
+.c-rds .c-rs2 {
+    background-image: url(/Entrega-Final/assets/img/community/facebookC\ 1.png);
+    background-size: cover;
+}
+
+.c-rds .c-rs3 {
+    background-image: url(/Entrega-Final/assets/img/community/instagramC\ 1.png);
+    background-size: cover;
+}
+
+.c-rds .c-rs4 {
+    background-image: url(/Entrega-Final/assets/img/community/youtubeC\ 1.png);
+    background-size: cover;
+}
+
+
+
