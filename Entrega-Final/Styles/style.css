@@ -272,12 +272,13 @@ nav ul li a {
 
 /*Style Banner Home*/
 .container-banner-home {
+    z-index: 1;
     display: flex;
     flex-direction: column;
     position: relative;
     justify-content: center;
     margin-left: auto;
-    margin-bottom: -8.5%;
+    margin-bottom: -2%;
     height: 550px;
 }
 
@@ -322,8 +323,12 @@ nav ul li a {
     max-width: 100%;
     max-height: 720px;
     filter:opacity(45%);
-    
 }
+.background-cat{
+    width: 100%;
+    max-height: 720px;
+}
+
 .category-title{
     position: absolute;
     font-size: 50px;
@@ -337,7 +342,7 @@ nav ul li a {
     height:720px;
     border-left-style: solid;
     border-left-color: #151516;
-    margin-top: 3.5%;
+    margin-top: 0.2%;
     font-size:xx-large;
 }
 
@@ -365,6 +370,7 @@ nav ul li a {
     transition: all 0.5s;
 }
 
+<<<<<<< HEAD
 .play-game {
     position: absolute;
     opacity: 0;
@@ -380,6 +386,10 @@ nav ul li a {
 
 .card:hover {transform:scale(1); transition: 0.5s; cursor:pointer; z-index: 1111;}
 .card-container:hover {transform:scale(1.1); transition: 0.5s; cursor:pointer;z-index: 1111;}
+=======
+.card:hover {transform:scale(1); transition: 0.5s; cursor:pointer; z-index: 11;}
+.card-container:hover {transform:scale(1.1); transition: 0.5s; cursor:pointer;z-index: 11;}
+>>>>>>> ca464dd6b8844f926fde8830a9d317d2bb267861
 .card img:hover {filter:brightness(20%);}
 
 .card-container:hover .play-game {
@@ -405,7 +415,7 @@ nav ul li a {
 
 .nav-carrusel button {
     position: absolute;
-    top: 50%;
+    top: 42%;
     transform: translatey(-50%);
     width: 60px;
     height: 60px;
@@ -416,7 +426,7 @@ nav ul li a {
     background-color: rgba(52, 51, 51, 0.665);
 }
 .nav-carrusel .prev {
-    left: -10px;
+    left: 2%;
     display: none;
 }
 .nav-carrusel .prev.show {
@@ -426,7 +436,7 @@ nav ul li a {
     background-color: #B572DB;
 }
 .nav-carrusel .next {
-right: -5px;
+    right: 1%;
 }
 .nav-carrusel .next:hover {
 background-color: #B572DB;
