@@ -1281,6 +1281,7 @@ padding-right: 10px;
     position: relative;
     background-image: url(/Entrega-Final/assets/img/community/new2.png);
     background-size: cover;
+    opacity: 0;
 }
 .c-box1 div {
     position: absolute;
@@ -1288,11 +1289,26 @@ padding-right: 10px;
     left: 25%;
 }
 
+.c-newAnim1 {
+    animation: animacionNew 2s;
+    transition: all 1s;
+}
+
+@keyframes animacionNew {
+    0% { 
+        transform: translateX(-1000px);
+       }
+    100% {
+        transform: translateX(0);
+    }
+}
+
 .c-box2{
     grid-area: n;
     position: relative;
     background-image: url(/Entrega-Final/assets/img/community/new3.png);
     background-size: cover;
+    opacity: 0;
 }
 .c-box2 div {
     position: absolute;
@@ -1303,11 +1319,26 @@ padding-right: 10px;
     text-align: center;
 }
 
+.c-newAnim2 {
+    animation: animacionNew2 2s;
+    transition: all 1s;
+}
+
+@keyframes animacionNew2 {
+    0% { 
+        transform: translateX(1000px);
+       }
+    100% {
+        transform: translateX(0);
+    }
+}
+
 .c-box3{
     grid-area: o;
     position: relative;
     background-image: url(/Entrega-Final/assets/img/community/new4.png);
     background-size: cover;
+    opacity: 0;
 }
 .c-box3 div {
     position: absolute;
@@ -1318,17 +1349,46 @@ padding-right: 10px;
     text-align: center;
 }
 
+.c-newAnim3 {
+    animation: animacionNew3 2s;
+    transition: all 1s;
+}
+
+@keyframes animacionNew3 {
+    0% { 
+        transform: translateX(1300px);
+       }
+    100% {
+        transform: translateX(0);
+    }
+}
+
 .c-box4{
     position: relative;
     grid-area: p;
     background-image: url(/Entrega-Final/assets/img/community/new1.png);
     background-size: cover;
+    opacity: 0;
 }
 .c-box4 div {
     position: absolute;
     top: 45%;
     left: 16%;
 }
+
+.c-newAnim4 {
+    animation: animacionNew4 2s;
+    transition: all 1s;
+}
+
+@keyframes animacionNew4 {
+    0% { 
+      transform: translateY(350px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
 
 /* juegos gratis*/
 
@@ -1359,6 +1419,11 @@ padding-right: 10px;
 .c-new-free-games div {
     width: 30%;
     height: 230px;
+}
+
+.c-freeGame {
+    opacity: 0;
+    transition: all 4s ease;
 }
 
 .c-freeGame1 {
@@ -1453,9 +1518,25 @@ padding-right: 10px;
     background-size: cover;
 }
 
+.articAnim1 {
+    animation: animacionArticulo1 5s;
+}
+
 .c-img-new1 {
     background-image: url(/Entrega-Final/assets/img/community/hallan-plagio-super-mario-bros.jpg);
     background-size: cover;
+}
+
+@keyframes animacionArticulo1 {
+    0% { 
+      transform: translateX(-1500px);
+     }
+    50% { 
+    transform: translateX(20px);
+    } 
+    100% {
+      transform: translateX(0);
+    }
 }
 
 /*articulo 2*/
@@ -1464,10 +1545,25 @@ padding-right: 10px;
     background-image: url(/Entrega-Final/assets/img/community/fondddd.png);
     background-size: cover;
 }
+.articAnim2 {
+    animation: animacionArticulo2 5s;
+}
 
 .c-img-new2 {
     background-image: url(/Entrega-Final/assets/img/community/god.png);
     background-size: cover;
+}
+
+@keyframes animacionArticulo2 {
+    0% { 
+        transform: translateX(1500px);
+       } 
+      50% { 
+      transform: translateX(-20px);
+      } 
+      100% {
+        transform: translateX(0);
+      }
 }
 
 .c-artic-a:hover .c-img-new{
@@ -1497,7 +1593,7 @@ padding-right: 10px;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin: 10% 8% 0% 8%;
+    margin: 5% 8% 0% 8%;
     background-color: #050210ca;
     height: 300px;
 }
