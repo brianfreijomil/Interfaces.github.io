@@ -273,7 +273,7 @@ nav ul li a {
     position: relative;
     justify-content: center;
     margin-left: auto;
-    margin-bottom: -8.5%;
+    margin-bottom: -5%;
     height: 550px;
 }
 
@@ -318,8 +318,12 @@ nav ul li a {
     max-width: 100%;
     max-height: 720px;
     filter:opacity(45%);
-    
 }
+.background-cat{
+    width: 100%;
+    max-height: 720px;
+}
+
 .category-title{
     position: absolute;
     font-size: 50px;
@@ -333,7 +337,7 @@ nav ul li a {
     height:720px;
     border-left-style: solid;
     border-left-color: #151516;
-    margin-top: 3.5%;
+    margin-top: 0.2%;
     font-size:xx-large;
 }
 
@@ -361,8 +365,8 @@ nav ul li a {
     transition: all 0.5s;
 }
 
-.card:hover {transform:scale(1); transition: 0.5s; cursor:pointer; z-index: 1111;}
-.card-container:hover {transform:scale(1.1); transition: 0.5s; cursor:pointer;z-index: 1111;}
+.card:hover {transform:scale(1); transition: 0.5s; cursor:pointer; z-index: 11;}
+.card-container:hover {transform:scale(1.1); transition: 0.5s; cursor:pointer;z-index: 11;}
 .card img:hover {filter:brightness(20%);}
 
 .card {
