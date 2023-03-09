@@ -4,11 +4,11 @@ const boxes = document.querySelectorAll('.box');
 let habAnimada = document.querySelectorAll('.hab-animada');
 
 window.addEventListener('scroll', initAnimations);
-
+let distinct = document.getElementById('distinta');
+distinct.style.display = "none"
 window.addEventListener('scroll', function(){
   let distinct = document.getElementById('distinta');
-  distinct.style.display = "none"
-  if(window.scrollY>=1400 && window.scrollY<2000){
+  if((window.scrollY>=1400 && window.scrollY<2000)){
     distinct.style.display = "block"
   }
   else{
