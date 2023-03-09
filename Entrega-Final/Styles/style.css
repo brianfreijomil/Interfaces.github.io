@@ -398,8 +398,6 @@ nav ul li a {
     position: relative;
     width: 100%;
     height:720px;
-    border-left-style: solid;
-    border-left-color: #151516;
     margin-top: 0.2%;
     font-size:xx-large;
 }
@@ -576,6 +574,7 @@ margin: 0px;
     vertical-align: bottom;
     color: #ffffff;
     font-size: large;
+    border-radius: 10%;
     border: solid 1px #9d1803ed;
     transition: all 500ms ease;
 }
@@ -591,11 +590,12 @@ margin: 0px;
 
 /*Style footer*/
 footer {
+    position: relative;
     display: flex;
     flex-direction: row;
     height: 320px;
-    background-color: #B572DB;
-    border: solid 15px #874aaa;
+    background-color: #4a3887ed;
+    border: solid 15px #301f68ed;
 }
 
 footer div {
@@ -625,21 +625,36 @@ footer section ul li {
     list-style-type: none;
 }
 
-footer .footer-links {
-    margin: 0px; 
-    position: relative;
-}
-
-footer .footer-links a {
-    position: absolute;
-    bottom: 10%;
-}
-
 footer .img-logo {
     position: absolute;
     bottom: 5%;
+    left: 85%;
 }
 
+/*Style social networks footer*/
+.container-social-networks-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    position: absolute;
+    top: 84%;
+    left: 87%;
+    cursor: pointer;
+    width: 6.3%;
+    height: 10%;
+    padding-right: 0.8%;
+}
+
+.container-social-networks-footer a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-social-networks-footer {
+    width: 100%;
+}
 /*-------------loading--------------------------------*/
 
 #loading-content{
