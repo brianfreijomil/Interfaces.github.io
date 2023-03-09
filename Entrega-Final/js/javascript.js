@@ -16,11 +16,8 @@ function rand(n){
    return(Math.floor(Math.random() * n + 1 ));
 }
 
-//profile menu-----------------------------------------------------
-document.querySelector(".profile").addEventListener("click", toggleMenu); 
-
-function toggleMenu() {
-    document.querySelector(".profile-menu").classList.toggle("show-profile");
+function showMenuExtra() {
+  document.querySelector('.options-site').classList.toggle("hiddenOptionSite");
 }
 
 //casilla pago-----------------------------------------------------
