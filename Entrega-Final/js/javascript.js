@@ -16,6 +16,10 @@ function rand(n){
    return(Math.floor(Math.random() * n + 1 ));
 }
 
+function showMenuExtra() {
+  document.querySelector('.options-site').classList.toggle("hiddenOptionSite");
+}
+
 //casilla pago-----------------------------------------------------
 document.querySelector("#casilla-pago").addEventListener("click", hideCasillaPago);
 

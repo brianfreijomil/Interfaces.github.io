@@ -163,12 +163,33 @@ header {
     height: 70%;
 }
 
+.ajustesNav {
+    position: absolute;
+    left: 23%;
+    top: 42%;
+    width: 2%;
+    height: 33%;
+    cursor: pointer;
+}
+.ajustesNav img {
+    width: 60%;
+    height: 70%;
+}
+
 .options-site {
     position: absolute;
     left: 0%;
     top: 100%;
     width: 26.5%;
+    height: 0%;
+    background-color: #301f68ed;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    overflow: hidden;
+    transition: all 1s;
+}
+.hiddenOptionSite {
     height: 50%;
+    overflow: none;
 }
 .options-site ul {
     display: flex;
@@ -179,10 +200,21 @@ header {
     align-items: center;
     height: 100%;
 }
-.options-site ul li {
+.options-site ul a {
     width: 33.33%;
+    height: 100%;
     text-align: center;
     border-left: solid rgba(240, 248, 255, 0.194) 0.2px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.options-site ul a:hover {
+    background-color: #45347d;
+}
+.options-site ul li {
+    text-align: center;
     font-size: 13px;
 }
 
