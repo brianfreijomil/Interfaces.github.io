@@ -16,13 +16,6 @@ function rand(n){
    return(Math.floor(Math.random() * n + 1 ));
 }
 
-//profile menu-----------------------------------------------------
-document.querySelector(".profile").addEventListener("click", toggleMenu); 
-
-function toggleMenu() {
-    document.querySelector(".profile-menu").classList.toggle("show-profile");
-}
-
 //casilla pago-----------------------------------------------------
 document.querySelector("#casilla-pago").addEventListener("click", hideCasillaPago);
 
