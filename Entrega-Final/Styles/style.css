@@ -472,9 +472,9 @@ nav ul li a {
     height: 60px;
     border-radius: 50%;
     outline: none;
-    border: 1px solid rgba(52, 51, 51, 0.665);
+    border: 1px solid rgb(41, 28, 89, 0.9);
     cursor: pointer;
-    background-color: rgba(52, 51, 51, 0.665);
+    background-color: rgb(41, 28, 89, 0.9);
 }
 .nav-carrusel .prev {
     left: 2%;
@@ -484,13 +484,13 @@ nav ul li a {
     display: block;
 }
 .nav-carrusel .prev.show:hover {
-    background-color: #B572DB;
+    background-color: #4a3986;
 }
 .nav-carrusel .next {
     right: 1%;
 }
 .nav-carrusel .next:hover {
-background-color: #B572DB;
+background-color: #4a3986;
 }
 .nav-carrusel .next.hide {
 display: none;
@@ -1599,7 +1599,7 @@ padding-right: 10px;
 /*articulo 1*/
 
 .c-artc1 {
-    background-image: url(/Interfaces.github.io/Entrega-Final/assets/img/community/backAt.png);
+    background-image: url(assets/img/community/backAt.png);
     background-size: cover;
 }
 
