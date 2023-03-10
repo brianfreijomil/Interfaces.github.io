@@ -20,24 +20,6 @@ function showMenuExtra() {
   document.querySelector('.options-site').classList.toggle("hiddenOptionSite");
 }
 
-//casilla pago-----------------------------------------------------
-document.querySelector("#casilla-pago").addEventListener("click", hideCasillaPago);
-
-function showCasillaPago(){
-  document.querySelector("#casilla-pago").classList.add("show-casilla");
-  document.querySelector("#casilla-pago").classList.remove("hide-casilla")
-  document.querySelector("#sombra-casilla-pago").classList.add("show-sombra-casilla");
-  document.querySelector("#sombra-casilla-pago").classList.remove("hide-sombra-casilla");
-}
-
-function hideCasillaPago(){
-  document.querySelector("#casilla-pago").classList.remove("show-casilla");
-  document.querySelector("#casilla-pago").classList.add("hide-casilla");
-  document.querySelector("#sombra-casilla-pago").classList.remove("show-sombra-casilla");
-  document.querySelector("#sombra-casilla-pago").classList.add("hide-sombra-casilla");
-}
-
-
 //carrusel 1-------------------------------------------------------
 const prev1 = document.querySelector(".prev1");
 const next1 = document.querySelector(".next1");

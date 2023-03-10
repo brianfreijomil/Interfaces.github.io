@@ -1173,12 +1173,17 @@ footer .img-logo {
     height: 100%;
     background-color: #000000d4;
 }
+
+.carrGame {
+    height: 400px;
+}
 .carrGame h3 {
     margin-left: 0%;
 }
 .trackGame {
     padding: 0%;
     margin: 0%;
+    height: 400px;
 }
 .trackGame .card-container {
     margin-top: 0%;
