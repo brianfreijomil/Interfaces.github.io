@@ -1173,6 +1173,23 @@ footer .img-logo {
     height: 100%;
     background-color: #000000d4;
 }
+.carrGame h3 {
+    margin-left: 0%;
+}
+.trackGame {
+    padding: 0%;
+    margin: 0%;
+}
+.trackGame .card-container {
+    margin-top: 0%;
+}
+
+.nav-carrusel .prevGame {
+    top: 25%;
+}
+.nav-carrusel .nextGame {
+    top: 25%;
+}
 
 /*----------------------------COMENTARIOS----------------------------------*/
 
