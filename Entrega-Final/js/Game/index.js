@@ -56,7 +56,7 @@ function init(linea, cantEntradas, cantPosiciones) {
 
 function addElementsGame(cantEntradas, cantPosiciones) {
     removeElements();
-    addPlayers("The GOAT", "El Bicho");
+    addPlayers();
     if(cantEntradas == 7) {
         addEntradas(150, 225, cantEntradas);
     }
@@ -71,9 +71,9 @@ function addElementsGame(cantEntradas, cantPosiciones) {
 }
 
 // AGREGO JUGADOR
-function addPlayers(name1, name2) {
-    jugador1 = new Jugador(name1);
-    jugador2 = new Jugador(name2);
+function addPlayers() {
+    jugador1 = "messi";
+    jugador2 = "cristiano";
 }
 
 // AGREGO FICHA
@@ -163,8 +163,6 @@ function removeElements() {
     for (let i = 0; i < cantEntradas; i++) {
         entradas.pop();
     }
-    jugador1 = null;
-    jugador2 = null;
 }
 
 // LIMPIA CANVAS
@@ -223,10 +221,10 @@ function showWinner(winner) {
     document.getElementById("winner").classList.remove("winner");
     document.getElementById("winner").classList.add("winner-show");
     if(winner == jugador2) {
-        document.getElementById("text-winner").innerHTML = winner.getNombre() + " Win";
+        document.getElementById("text-winner").innerHTML = "Cristiano Win";
     }
     else {
-        document.getElementById("text-winner").innerHTML = winner.getNombre() + " Win"
+        document.getElementById("text-winner").innerHTML = "Messi Win";
     }
 }
 //oculta cartel de ganador
