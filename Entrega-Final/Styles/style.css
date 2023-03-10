@@ -428,25 +428,6 @@ nav ul li a {
     list-style-type: none;
     transition: all 0.5s;
 }
-<<<<<<< HEAD
-.play-game{
-    width: 190px;
-    height: 280px;
-    opacity: 0;
-    z-index: 12;
-    position: absolute;
-    top: 20%;
-}
-
-.play-game:hover{
-    z-index: 12;
-    opacity: 1;
-    filter: brightness(100%);
-}
-
-.card:hover {transform:scale(1.1); transition: 0.5s; cursor:pointer;z-index: 11;filter:brightness(30%);}
-=======
->>>>>>> e32608115cb01770fe51cd6c44dc37c4aa8f11aa
 
 .play-game {
     position: absolute;
