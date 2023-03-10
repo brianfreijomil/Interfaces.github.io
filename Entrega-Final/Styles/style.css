@@ -429,24 +429,6 @@ nav ul li a {
     transition: all 0.5s;
 }
 
-<<<<<<< HEAD
-.play-game{
-    width: 190px;
-    height: 280px;
-    opacity: 0;
-    z-index: 12;
-    position: absolute;
-    top: 20%;
-}
-
-.play-game:hover{
-    z-index: 12;
-    opacity: 1;
-    filter: brightness(100%);
-}
-
-.card:hover {transform:scale(1.1); transition: 0.5s; cursor:pointer;z-index: 11;filter:brightness(30%);}
-=======
 .play-game {
     position: absolute;
     opacity: 0;
@@ -463,7 +445,6 @@ nav ul li a {
 .card:hover {transform:scale(1); transition: 0.5s; cursor:pointer; z-index: 11;}
 .card-container:hover {transform:scale(1.1); transition: 0.5s; cursor:pointer;z-index: 11;}
 .card img:hover {filter:brightness(20%);}
->>>>>>> 2440549ae6f4f4d9d601090e9c8ec9aa44b29050
 
 .card-container:hover .play-game {
     z-index: 1112;
